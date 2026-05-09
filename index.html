@@ -469,7 +469,7 @@ function renderAI(){
       </div>
 
       <div style="padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end;flex-shrink:0">
-        <textarea id="cinp" class="inp" style="flex:1;min-height:40px;max-height:88px;line-height:1.5;font-size:13px" placeholder="직접 질문 입력 (Enter 전송) — 또는 위에서 키워드 + 목적 선택">${esc(S.chatInput)}</textarea>
+        <textarea id="cinp" class="inp" style="flex:1;min-height:40px;max-height:88px;line-height:1.5;font-size:13px" placeholder="직접 질문 입력 (Enter 전송) — 또는 위에서 키워드 + 목적 선택"></textarea>
         <button id="csend" class="btn-p" style="flex-shrink:0;padding:10px 14px" ${S.chatLoading?'disabled':''}>전송</button>
       </div>
     </div>
@@ -648,7 +648,8 @@ function bind(){
     const go=()=>{
       const id=document.getElementById('li')?.value,pw=document.getElementById('lp')?.value;
       const u=S.users.find(u=>u.id===id&&u.pw===pw);
-      if(u){set({user:u,msgs:[{role:'assistant',content:`안녕하세요, ${u.name}님.\n\nAFG 지식관리 시스템입니다.\n내부 지식 베이스와 외부 공시 데이터로 상담 업무를 지원합니다.\n\n예시 질문\n· 보험금 청구 서류 안내\n· 암보험 보장 내용 요약\n· 보험료 거절 고객 응대 방법\n· 갑상선암 소액암 판례 (웹 검색 ON 권장)`}]});}
+      if(u){
+        set({user:u, msgs:[{role:'assistant',content:`안녕하세요, ${u.name}님.\n\nAFG 지식관리 시스템입니다.\n내부 지식 베이스와 외부 공시 데이터로 상담 업무를 지원합니다.\n\n예시 질문\n· 보험금 청구 서류 안내\n· 암보험 보장 내용 요약\n· 보험료 거절 고객 응대 방법\n· 갑상선암 소액암 판례 (웹 검색 ON 권장)`}]});}
       else{const el=document.getElementById('le');if(el)el.textContent='아이디 또는 비밀번호가 올바르지 않습니다.';}
     };
     document.getElementById('lb')?.addEventListener('click',go);
@@ -856,13 +857,17 @@ function formatAI(text){
 async function sendChat(){
   if(S.chatLoading) return;
   const el = document.getElementById('cinp');
-  const text = (el?.value || S.chatInput).trim();
+  /* intent 버튼으로 온 경우 S.chatInput 사용, 직접 입력은 textarea 값 사용 */
+  const text = (S.chatInput || el?.value || '').trim();
   if(!text) return;
 
   /* 채팅 말풍선에 보일 텍스트 vs AI에 실제로 전달할 텍스트 분리 */
-  const displayText = S.chatDisplayText || text;
+  const displayText = S.chatDisplayText || el?.value?.trim() || text;
   const promptText  = text;
+  /* 상태 초기화 — textarea도 비움 */
   S.chatDisplayText = null;
+  S.chatInput = '';
+  if(el) el.value = '';
 
   const rd  = S.aiCats.length>0 ? S.docs.filter(d=>S.aiCats.includes(d.category)) : S.docs;
   const ctx = rd.slice(0,15).map(d=>`[${d.category}] ${d.title}\n${d.content}\n태그: ${(d.tags||[]).join(', ')}`).join('\n\n---\n\n');
@@ -872,9 +877,8 @@ async function sendChat(){
     ? `\n【현재 검색 목적】: ${intent.label}\n【우선 참조 소스】: ${intent.sources}\n이 목적에 맞게 위 소스를 우선 검색하고 답변 형식을 최적화하세요.`
     : '';
 
-  /* 말풍선에는 displayText, API에는 promptText 사용 */
   const nm = [...S.msgs, {role:'user', content:promptText, display:displayText}];
-  set({msgs:nm, chatInput:'', chatLoading:true, searchIntent:null});
+  set({msgs:nm, chatLoading:true, searchIntent:null});
   scrollChat();
 
   try{
@@ -913,19 +917,25 @@ ${ctx}
 
     const body = {
       model:'claude-sonnet-4-20250514', max_tokens:1500, system:sys,
-      /* API 메시지에는 실제 promptText(content) 사용, display 필드는 제외 */
       messages: nm
         .filter(m=>!(m.role==='assistant' && nm.indexOf(m)===0))
         .map(m=>({role:m.role, content:m.content}))
     };
     if(S.aiWeb) body.tools = [{type:"web_search_20250305",name:"web_search"}];
 
-    const res   = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
+      body:JSON.stringify(body)
+    });
     const data  = await res.json();
     const reply = (data.content||[]).map(c=>c.type==='text'?c.text:'').filter(Boolean).join('') || '응답을 받지 못했습니다.';
     set({msgs:[...nm,{role:'assistant',content:reply}], chatLoading:false});
-  } catch {
-    set({msgs:[...nm,{role:'assistant',content:'연결 오류가 발생했습니다. 인터넷 연결을 확인해주세요.'}], chatLoading:false});
+  } catch(e) {
+    set({msgs:[...nm,{role:'assistant',content:'AI 연결 중 오류가 발생했습니다.\n인터넷 연결을 확인하거나 잠시 후 다시 시도해주세요.'}], chatLoading:false});
   }
   scrollChat();
 }
