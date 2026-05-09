@@ -2,279 +2,296 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>AFG 지식관리 시스템</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── AFG Official Brand Colors (Navy) ─────────────────── */
 :root{
-  --navy-deep:  #0A1628;   /* 로고 배경 딥네이비 */
-  --navy:       #0D1F3C;   /* 메인 배경 */
-  --navy-mid:   #112347;   /* 헤더/카드 배경 */
-  --navy-light: #172D58;   /* 서피스 */
-  --navy-pale:  #1E3A6E;   /* 호버/강조 서피스 */
-  --border:     rgba(255,255,255,.08);
-  --border-2:   rgba(255,255,255,.13);
-  --white:      #FFFFFF;
-  --white-2:    rgba(255,255,255,.75);
-  --white-3:    rgba(255,255,255,.45);
-  --white-4:    rgba(255,255,255,.22);
-  --white-5:    rgba(255,255,255,.10);
-  --accent:     #4A7FD4;   /* 밝은 블루 액센트 */
-  --accent-2:   #2E5FA8;
-  --gold:       #C9A96E;   /* 서브 골드 포인트 */
-  --gold-dim:   rgba(201,169,110,.15);
-  --red-soft:   #C06060;
-
-  --cat-1:#C9A96E; --cat-2:#6BA888; --cat-3:#6896C8;
-  --cat-4:#A87878; --cat-5:#68A8A8; --cat-6:#A89068;
-  --cat-7:#8878A8; --cat-8:#687888;
+  --navy-deep:#0A1628;--navy:#0D1F3C;--navy-mid:#112347;--navy-light:#172D58;
+  --border:rgba(255,255,255,.08);--border-2:rgba(255,255,255,.14);
+  --white:#fff;--w2:rgba(255,255,255,.75);--w3:rgba(255,255,255,.45);--w4:rgba(255,255,255,.22);--w5:rgba(255,255,255,.10);
+  --accent:#4A7FD4;--accent2:#2E5FA8;--gold:#C9A96E;--red:#C06060;
+  --cat-faq:#C9A96E;--cat-pro:#6BA888;--cat-scr:#6896C8;--cat-man:#A87878;
+  --cat-act:#68A8A8;--cat-not:#A89068;--cat-cla:#8878A8;--cat-etc:#687888;
+  --hh:54px;--tbh:62px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{font-family:'Noto Sans KR',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;font-size:14px;line-height:1.6}
-::-webkit-scrollbar{width:4px;height:4px}
-::-webkit-scrollbar-track{background:var(--navy)}
-::-webkit-scrollbar-thumb{background:var(--navy-pale);border-radius:2px}
-::-webkit-scrollbar-thumb:hover{background:var(--accent)}
-input,select,textarea,button{font-family:'Noto Sans KR',sans-serif;outline:none;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow-x:hidden}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--navy);color:var(--white);font-size:14px;line-height:1.6}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--navy-light)}
+input,select,textarea,button{font-family:'Noto Sans KR',sans-serif;outline:none;-webkit-appearance:none;box-sizing:border-box}
 textarea{resize:vertical}
 
-.inp{width:100%;background:var(--navy-deep);border:1px solid var(--border-2);border-radius:3px;padding:10px 14px;color:var(--white);font-size:13px;transition:border-color .15s}
+/* ─ 공통 ─ */
+.inp{width:100%;background:var(--navy-deep);border:1px solid var(--border-2);border-radius:8px;padding:11px 14px;color:var(--white);font-size:14px;transition:border-color .15s}
 .inp:focus{border-color:var(--accent)}
-.inp::placeholder{color:var(--white-4)}
-select.inp option{background:var(--navy-mid);color:var(--white)}
+.inp::placeholder{color:var(--w4)}
+select.inp option{background:var(--navy-mid)}
+.lbl{display:block;color:var(--w3);font-size:11px;margin-bottom:6px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.btn-p{background:var(--accent);color:#fff;border:none;padding:12px 20px;font-size:13px;font-weight:700;cursor:pointer;border-radius:8px;min-height:44px;white-space:nowrap;transition:background .15s}
+.btn-p:hover{background:var(--accent2)}
+.btn-p:disabled{opacity:.4;cursor:not-allowed}
+.btn-l{background:transparent;color:var(--w3);border:1px solid var(--border-2);padding:11px 18px;font-size:13px;font-weight:500;cursor:pointer;border-radius:8px;min-height:44px;transition:all .15s}
+.btn-l:hover{border-color:var(--accent);color:var(--white)}
+.btn-s{background:var(--w5);border:none;color:var(--w3);padding:6px 12px;font-size:12px;cursor:pointer;border-radius:6px;min-height:36px;transition:all .15s}
+.btn-s:hover{color:var(--white);background:var(--border-2)}
+.pill{font-size:10px;font-weight:700;padding:3px 8px;letter-spacing:.05em;text-transform:uppercase;border-radius:4px}
+.tag{background:var(--w5);color:var(--w3);font-size:11px;padding:3px 8px;border:1px solid var(--border);border-radius:4px}
+.card{background:var(--navy-mid);border:1px solid var(--border);padding:16px;cursor:pointer;transition:all .15s;border-radius:10px}
+.card:hover,.card:active{background:var(--navy-light);border-color:var(--border-2)}
 
-.lbl{display:block;color:var(--white-3);font-size:11px;margin-bottom:6px;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+/* ─ overlay/modal ─ */
+.overlay{position:fixed;inset:0;background:rgba(5,12,25,.92);display:flex;align-items:flex-end;justify-content:center;z-index:300;padding:0}
+.modal{background:var(--navy-mid);border:1px solid var(--border-2);padding:24px 20px;width:100%;max-height:92vh;overflow-y:auto;border-radius:16px 16px 0 0}
+@media(min-width:600px){.overlay{align-items:center;padding:20px}.modal{border-radius:12px;max-width:660px;padding:32px}}
+.toast{position:fixed;top:calc(var(--hh) + 10px);left:50%;transform:translateX(-50%);z-index:400;padding:10px 20px;font-size:13px;font-weight:600;border-radius:20px;white-space:nowrap;animation:tIn .25s ease;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+@keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
-.btn-primary{background:var(--accent);color:#fff;border:none;padding:9px 20px;font-size:12px;font-weight:700;letter-spacing:.05em;cursor:pointer;transition:background .15s;white-space:nowrap;border-radius:2px}
-.btn-primary:hover{background:var(--accent-2)}
-.btn-primary:disabled{opacity:.4;cursor:not-allowed}
+/* ─ 헤더 ─ */
+#hdr{background:var(--navy-deep);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:100;height:var(--hh)}
+.hdr-in{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;align-items:center;height:100%;gap:8px}
+.logo{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-right:8px}
+.logo svg{width:26px;height:26px}
+.logo-t{font-size:16px;font-weight:700;letter-spacing:.16em}
+.logo-s{font-size:9px;color:var(--w4);letter-spacing:.1em;text-transform:uppercase;margin-left:4px}
+.pc-nav{display:flex;flex:1;overflow-x:auto}
+.pnb{background:transparent;color:var(--w3);border:none;padding:0 14px;height:var(--hh);font-size:11px;font-weight:600;letter-spacing:.08em;cursor:pointer;border-bottom:2px solid transparent;text-transform:uppercase;white-space:nowrap;transition:color .15s}
+.pnb:hover{color:var(--w2)}
+.pnb.on{color:var(--white);border-bottom-color:var(--accent)}
+.usr{flex-shrink:0;text-align:right}
+.usr-n{font-size:13px;font-weight:600}
+.usr-s{font-size:10px;color:var(--w4)}
 
-.btn-line{background:transparent;color:var(--white-3);border:1px solid var(--border-2);padding:9px 18px;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;border-radius:2px}
-.btn-line:hover{border-color:var(--accent);color:var(--white)}
+/* ─ 하단 탭바 (모바일) ─ */
+#tbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--navy-deep);border-top:1px solid var(--border);height:var(--tbh);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tb{flex:1;background:transparent;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--w4);cursor:pointer;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:8px 2px;transition:color .15s}
+.tb.on{color:var(--accent)}
+.tb svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-.btn-sm{background:var(--white-5);border:none;color:var(--white-3);padding:4px 10px;font-size:12px;cursor:pointer;transition:all .15s;border-radius:2px}
-.btn-sm:hover{color:var(--white);background:var(--border-2)}
+/* ─ 본문 ─ */
+#main{max-width:1200px;margin:0 auto;padding:calc(var(--hh) + 20px) 20px 20px}
 
-.overlay{position:fixed;inset:0;background:rgba(5,12,25,.9);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px}
-.modal{background:var(--navy-mid);border:1px solid var(--border-2);padding:32px;width:100%;max-height:90vh;overflow-y:auto;border-radius:4px}
+@media(max-width:599px){
+  .pc-nav,.logo-s,.usr,.pc-logout{display:none!important}
+  #tbar{display:flex}
+  #main{padding:calc(var(--hh) + 14px) 12px calc(var(--tbh) + 14px)}
+  .modal{padding:20px 16px}
+}
+@media(min-width:600px) and (max-width:900px){
+  .logo-s{display:none}
+  #main{padding:calc(var(--hh) + 16px) 16px 16px}
+}
 
-.toast{position:fixed;top:24px;right:24px;z-index:9999;padding:12px 20px;font-size:13px;font-weight:500;letter-spacing:.02em;animation:fadeSlide .25s ease;border-radius:2px}
-@keyframes fadeSlide{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
+/* ─ 통계 ─ */
+.sg{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
+@media(max-width:599px){.sg{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:360px){.sg{grid-template-columns:repeat(2,1fr)}}
+.sc{background:var(--navy-mid);border:1px solid var(--border);padding:14px 12px;border-radius:10px}
+.sn{font-size:22px;font-weight:300;line-height:1}
+.sl{font-size:10px;color:var(--w4);letter-spacing:.05em;text-transform:uppercase;margin-top:4px}
 
-.tag{background:var(--white-5);color:var(--white-3);font-size:11px;padding:2px 8px;border:1px solid var(--border);letter-spacing:.02em}
-.cat-pill{font-size:10px;font-weight:700;padding:2px 8px;letter-spacing:.06em;text-transform:uppercase;border-radius:2px}
+/* ─ 카테고리 필터 스크롤 ─ */
+.cscroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;margin-bottom:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cscroll::-webkit-scrollbar{display:none}
+.cbtn{flex-shrink:0;padding:7px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;cursor:pointer;border-radius:20px;white-space:nowrap;border:1px solid var(--border);background:transparent;color:var(--w3);transition:all .15s;min-height:34px}
 
-.card{background:var(--navy-mid);border:1px solid var(--border);padding:20px;cursor:pointer;transition:all .2s;border-radius:0}
-.card:hover{background:var(--navy-light);border-color:var(--border-2)}
+/* ─ 문서 그리드 ─ */
+.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+@media(max-width:599px){.dg{grid-template-columns:1fr}}
 
-.nav-item{background:transparent;color:var(--white-3);border:none;padding:0 16px;height:56px;font-size:12px;font-weight:600;letter-spacing:.08em;cursor:pointer;transition:color .15s;border-bottom:2px solid transparent;text-transform:uppercase;white-space:nowrap}
-.nav-item:hover{color:var(--white-2)}
-.nav-item.active{color:var(--white);border-bottom-color:var(--accent)}
+/* ─ AI ─ */
+.ai-wrap{display:grid;grid-template-columns:190px 1fr;gap:10px;height:calc(100vh - var(--hh) - 40px)}
+@media(max-width:900px){.ai-wrap{grid-template-columns:160px 1fr}}
+@media(max-width:599px){
+  .ai-wrap{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:calc(100vh - var(--hh) - var(--tbh) - 28px)}
+  .ai-side{padding:12px}
+  .ai-side-rows{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+}
+.ai-side{background:var(--navy-mid);border:1px solid var(--border);padding:16px;overflow-y:auto;border-radius:10px}
+.ai-chat{background:var(--navy-mid);border:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;border-radius:10px}
+#cmsg{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch}
+.cu{background:var(--accent);color:#fff;padding:11px 14px;font-size:13px;line-height:1.7;max-width:80%;white-space:pre-wrap;font-weight:500;border-radius:16px 16px 4px 16px;align-self:flex-end}
+.ca{background:var(--navy-deep);color:var(--w2);border:1px solid var(--border);padding:11px 14px;font-size:13px;line-height:1.7;max-width:80%;white-space:pre-wrap;border-radius:16px 16px 16px 4px}
 
-table{width:100%;border-collapse:collapse}
-th{padding:10px 16px;text-align:left;font-size:11px;color:var(--white-4);font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--border)}
-td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--white-2)}
+/* ─ 허브 ─ */
+.hg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+@media(max-width:599px){.hg{grid-template-columns:1fr}}
+.hcard{background:var(--navy-mid);border:1px solid var(--border);padding:16px;border-radius:10px;text-decoration:none;display:block;transition:background .15s}
+.hcard:hover,.hcard:active{background:var(--navy-light)}
+
+/* ─ 탭/섹션 ─ */
+.stabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.stabs::-webkit-scrollbar{display:none}
+.stab{background:transparent;color:var(--w3);border:none;padding:12px 18px;font-size:13px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s}
+.stab.on{color:var(--white);border-bottom-color:var(--accent)}
+
+/* ─ 테이블 ─ */
+.twrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;min-width:480px}
+th{padding:10px 14px;text-align:left;font-size:11px;color:var(--w4);font-weight:600;letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--border);background:var(--navy-deep);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--border);font-size:13px;color:var(--w2)}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--white-5)}
+tr:hover td{background:var(--w5)}
 
-.chat-user{background:var(--accent);color:#fff;padding:12px 16px;font-size:13px;line-height:1.7;max-width:76%;white-space:pre-wrap;font-weight:500;border-radius:2px}
-.chat-ai{background:var(--navy-deep);color:var(--white-2);border:1px solid var(--border);padding:12px 16px;font-size:13px;line-height:1.7;max-width:76%;white-space:pre-wrap;border-radius:2px}
-#chat-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
-.stat-card{background:var(--navy-mid);border:1px solid var(--border);padding:20px 24px}
-
-.hub-section{margin-bottom:36px}
-.hub-section-title{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--white-4);text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
-.hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--border)}
-.hub-card{background:var(--navy-mid);padding:18px 20px;transition:background .15s;text-decoration:none;display:block}
-.hub-card:hover{background:var(--navy-light)}
-.hub-card-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px}
-.hub-card-desc{font-size:11px;color:var(--white-3);line-height:1.5}
-.hub-card-badge{font-size:10px;font-weight:700;letter-spacing:.06em;padding:1px 7px;margin-bottom:8px;display:inline-block;text-transform:uppercase;border-radius:2px}
-
-.loading-dots span{animation:blink 1.2s infinite;opacity:0}
-.loading-dots span:nth-child(2){animation-delay:.2s}
-.loading-dots span:nth-child(3){animation-delay:.4s}
+.ldots span{animation:blink 1.2s infinite;opacity:0}
+.ldots span:nth-child(2){animation-delay:.2s}
+.ldots span:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,100%{opacity:0}50%{opacity:1}}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
-/* ── AFG SVG 로고 (헥사곤 + A 심볼 정밀 재현) ─────────── */
-const AFG_LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
-  <!-- 외곽 헥사곤 프레임 (6각형 윤곽) -->
-  <polygon points="40,4 72,22 72,58 40,76 8,58 8,22" fill="none" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
-  <!-- A 심볼 — 왼쪽 대각선 -->
-  <line x1="24" y1="60" x2="40" y2="20" stroke="white" stroke-width="5" stroke-linecap="round"/>
-  <!-- A 심볼 — 오른쪽 대각선 -->
-  <line x1="56" y1="60" x2="40" y2="20" stroke="white" stroke-width="5" stroke-linecap="round"/>
-  <!-- A 심볼 — 가로 중간 바 -->
-  <line x1="28" y1="47" x2="52" y2="47" stroke="white" stroke-width="4" stroke-linecap="round"/>
-  <!-- 하단 삼선 (horizontal stripes — 로고 특징) -->
-  <line x1="20" y1="64" x2="60" y2="64" stroke="white" stroke-width="2.8" stroke-linecap="round" opacity=".85"/>
-  <line x1="23" y1="69" x2="57" y2="69" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity=".6"/>
-  <line x1="27" y1="74" x2="53" y2="74" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity=".35"/>
-</svg>`;
+const LOGO_BIG=`<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="40,4 72,22 72,58 40,76 8,58 8,22" fill="none" stroke="white" stroke-width="2.2" stroke-linejoin="round"/><line x1="24" y1="60" x2="40" y2="20" stroke="white" stroke-width="5" stroke-linecap="round"/><line x1="56" y1="60" x2="40" y2="20" stroke="white" stroke-width="5" stroke-linecap="round"/><line x1="28" y1="47" x2="52" y2="47" stroke="white" stroke-width="4" stroke-linecap="round"/><line x1="20" y1="64" x2="60" y2="64" stroke="white" stroke-width="2.8" stroke-linecap="round" opacity=".8"/><line x1="24" y1="69" x2="56" y2="69" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".5"/><line x1="28" y1="74" x2="52" y2="74" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity=".3"/></svg>`;
+const LOGO_SM=`<svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="white" stroke-width="1.5"/><line x1="11" y1="27" x2="18" y2="9" stroke="white" stroke-width="2.4" stroke-linecap="round"/><line x1="25" y1="27" x2="18" y2="9" stroke="white" stroke-width="2.4" stroke-linecap="round"/><line x1="13" y1="21" x2="23" y2="21" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="29" x2="27" y2="29" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity=".7"/><line x1="11" y1="32" x2="25" y2="32" stroke="white" stroke-width="1" stroke-linecap="round" opacity=".4"/></svg>`;
 
-/* 더 정밀한 AFG 심볼 (헤더 소형용) */
-const AFG_MARK_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none">
-  <polygon points="18,2 32,10 32,26 18,34 4,26 4,10" fill="none" stroke="white" stroke-width="1.4"/>
-  <line x1="11" y1="27" x2="18" y2="9" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
-  <line x1="25" y1="27" x2="18" y2="9" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
-  <line x1="13" y1="21" x2="23" y2="21" stroke="white" stroke-width="2" stroke-linecap="round"/>
-  <line x1="9" y1="29" x2="27" y2="29" stroke="white" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
-  <line x1="11" y1="32" x2="25" y2="32" stroke="white" stroke-width="1" stroke-linecap="round" opacity=".4"/>
-</svg>`;
+const IC={
+  book:`<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+  bot:`<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>`,
+  globe:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+  admin:`<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+};
 
-/* ── 상수 ─────────────────────────────────────────────── */
-const CATEGORIES=["FAQ","상품요약","상담스크립트","업무매뉴얼","활동관리","공지및규정","보상사례","기타"];
-const CAT_HEX={"FAQ":"#C9A96E","상품요약":"#6BA888","상담스크립트":"#6896C8","업무매뉴얼":"#A87878","활동관리":"#68A8A8","공지및규정":"#A89068","보상사례":"#8878A8","기타":"#687888"};
+const CATS=["FAQ","상품요약","상담스크립트","업무매뉴얼","활동관리","공지및규정","보상사례","기타"];
+const CHEX={"FAQ":"#C9A96E","상품요약":"#6BA888","상담스크립트":"#6896C8","업무매뉴얼":"#A87878","활동관리":"#68A8A8","공지및규정":"#A89068","보상사례":"#8878A8","기타":"#687888"};
 
-const LIFE_INSURERS=[
-  {name:"삼성생명",url:"https://www.samsunglife.com/individual/product/productAll.html",desc:"종신·암·연금 상품 전체 목록"},
-  {name:"한화생명",url:"https://www.hanwhalife.com/insurance/product/list.do",desc:"보장성·저축성·변액 상품 목록"},
-  {name:"교보생명",url:"https://www.kyobo.co.kr/prd/ins/product/list",desc:"생명·건강·연금 상품 비교"},
-  {name:"신한라이프",url:"https://www.shinhanlife.co.kr/product/productList.do",desc:"보험료 계산기 포함 상품 목록"},
-  {name:"미래에셋생명",url:"https://www.miraeassetlife.co.kr/insurance/product/productList.do",desc:"변액·연금·종신 상품"},
-  {name:"ABL생명",url:"https://www.abllife.co.kr/product/productList.do",desc:"보장성·연금 상품 목록"},
-  {name:"흥국생명",url:"https://www.heungkuklife.co.kr/product/productList.do",desc:"보장성·저축 상품"},
-  {name:"DB생명",url:"https://www.idblife.com/product/productList.do",desc:"암·치아·생활보장 상품"},
-  {name:"KDB생명",url:"https://www.kdblife.co.kr/product/productList.do",desc:"저축·보장 상품 목록"},
-  {name:"동양생명",url:"https://www.myangel.co.kr/product/productList.do",desc:"건강·연금 상품"},
-  {name:"처브라이프",url:"https://www.chubblife.co.kr/product/productList.do",desc:"글로벌 보험사 상품"},
-  {name:"푸본현대생명",url:"https://www.fubonhyundai.com/product/productList.do",desc:"보장·연금 상품 목록"},
+const LIFE=[
+  {name:"삼성생명",url:"https://www.samsunglife.com/individual/product/productAll.html",desc:"종신·암·연금 상품 전체"},
+  {name:"한화생명",url:"https://www.hanwhalife.com/insurance/product/list.do",desc:"보장성·저축성·변액"},
+  {name:"교보생명",url:"https://www.kyobo.co.kr/prd/ins/product/list",desc:"생명·건강·연금 비교"},
+  {name:"신한라이프",url:"https://www.shinhanlife.co.kr/product/productList.do",desc:"보험료 계산기 포함"},
+  {name:"미래에셋생명",url:"https://www.miraeassetlife.co.kr/insurance/product/productList.do",desc:"변액·연금·종신"},
+  {name:"ABL생명",url:"https://www.abllife.co.kr/product/productList.do",desc:"보장성·연금"},
+  {name:"흥국생명",url:"https://www.heungkuklife.co.kr/product/productList.do",desc:"보장성·저축"},
+  {name:"DB생명",url:"https://www.idblife.com/product/productList.do",desc:"암·치아·생활보장"},
+  {name:"KDB생명",url:"https://www.kdblife.co.kr/product/productList.do",desc:"저축·보장"},
+  {name:"동양생명",url:"https://www.myangel.co.kr/product/productList.do",desc:"건강·연금"},
+  {name:"처브라이프",url:"https://www.chubblife.co.kr/product/productList.do",desc:"글로벌 보험사"},
+  {name:"푸본현대생명",url:"https://www.fubonhyundai.com/product/productList.do",desc:"보장·연금"},
 ];
-const NONLIFE_INSURERS=[
-  {name:"삼성화재",url:"https://www.samsungfire.com/product/productList.do",desc:"자동차·화재·실손·운전자보험"},
-  {name:"현대해상",url:"https://www.hi.co.kr/product/productList.do",desc:"건강·자동차·실손 상품"},
-  {name:"DB손해보험",url:"https://www.idbins.com/productList.do",desc:"자동차·운전자·화재 상품"},
-  {name:"KB손해보험",url:"https://www.kbinsure.co.kr/CG302000000.ec",desc:"건강·자동차·화재 상품"},
-  {name:"메리츠화재",url:"https://www.meritzfire.com/product/productList.do",desc:"건강·자동차·법인 보험"},
-  {name:"한화손해보험",url:"https://www.hwgeneralins.com/product/productList.do",desc:"자동차·건강·여행 상품"},
-  {name:"흥국화재",url:"https://www.heungkukfire.co.kr/product/productList.do",desc:"건강·자동차 상품"},
-  {name:"MG손해보험",url:"https://www.mgg.co.kr/product/productList.do",desc:"건강·자동차 상품"},
-  {name:"롯데손해보험",url:"https://www.lotteis.com/product/productList.do",desc:"자동차·건강·화재 상품"},
-  {name:"농협손해보험",url:"https://www.nhfire.co.kr/product/productList.do",desc:"농업·건강·자동차 보험"},
+const NONLIFE=[
+  {name:"삼성화재",url:"https://www.samsungfire.com/product/productList.do",desc:"자동차·화재·실손·운전자"},
+  {name:"현대해상",url:"https://www.hi.co.kr/product/productList.do",desc:"건강·자동차·실손"},
+  {name:"DB손해보험",url:"https://www.idbins.com/productList.do",desc:"자동차·운전자·화재"},
+  {name:"KB손해보험",url:"https://www.kbinsure.co.kr/CG302000000.ec",desc:"건강·자동차·화재"},
+  {name:"메리츠화재",url:"https://www.meritzfire.com/product/productList.do",desc:"건강·자동차·법인"},
+  {name:"한화손해보험",url:"https://www.hwgeneralins.com/product/productList.do",desc:"자동차·건강·여행"},
+  {name:"흥국화재",url:"https://www.heungkukfire.co.kr/product/productList.do",desc:"건강·자동차"},
+  {name:"MG손해보험",url:"https://www.mgg.co.kr/product/productList.do",desc:"건강·자동차"},
+  {name:"롯데손해보험",url:"https://www.lotteis.com/product/productList.do",desc:"자동차·건강·화재"},
+  {name:"농협손해보험",url:"https://www.nhfire.co.kr/product/productList.do",desc:"농업·건강·자동차"},
 ];
-const PUBLIC_LINKS=[
-  {badge:"금감원",bc:"#6896C8",name:"보험다모아 — 상품 비교공시",url:"https://www.e-insmarket.or.kr",desc:"자동차·실손·연금·보장성 보험료 및 보장 비교"},
-  {badge:"금감원",bc:"#6896C8",name:"금융감독원 보험 공시실",url:"https://www.fss.or.kr/fss/kr/pblcRlsMenu/finalViewDetail.do?pblcRlsMenuCd=M05060000",desc:"보험사별 공시이율·사업비·해지환급금 공시"},
-  {badge:"생보협회",bc:"#6BA888",name:"생명보험협회 공시실",url:"https://www.klia.or.kr/consumer/publicRelations/publicRelationsProduct/list.do",desc:"생명보험 상품별 비교공시 (보험료·해지환급금)"},
-  {badge:"손보협회",bc:"#A87878",name:"손해보험협회 공시실",url:"https://pub.knia.or.kr",desc:"손해보험 상품별 비교공시 및 사업비 공시"},
-  {badge:"금융위",bc:"#8878A8",name:"금융상품통합비교공시 finlife",url:"https://finlife.fss.or.kr",desc:"예·적금·보험·대출 한번에 비교"},
-  {badge:"공공데이터",bc:"#68A8A8",name:"금융위원회 보험통계 공공데이터",url:"https://www.data.go.kr/tcs/dss/selectDataSetList.do?keyword=보험",desc:"생명·손해보험 가입통계, 보험료 현황 원시 데이터"},
-  {badge:"건심평",bc:"#C9A96E",name:"건강보험심사평가원 병원정보",url:"https://www.hira.or.kr/main.do",desc:"요양기관 정보 조회 — 보상 청구 병원 확인용"},
-  {badge:"법원",bc:"#A89068",name:"대법원 판례검색",url:"https://www.law.go.kr/precInfoP.do",desc:"보험 관련 판례 검색 — 보상 분쟁 대응용"},
+const PUB=[
+  {badge:"금감원",bc:"#6896C8",name:"보험다모아 — 상품 비교공시",url:"https://www.e-insmarket.or.kr",desc:"자동차·실손·연금·보장성 비교"},
+  {badge:"금감원",bc:"#6896C8",name:"금융감독원 보험공시실",url:"https://www.fss.or.kr/fss/kr/pblcRlsMenu/finalViewDetail.do?pblcRlsMenuCd=M05060000",desc:"공시이율·사업비·해지환급금"},
+  {badge:"생보협회",bc:"#6BA888",name:"생명보험협회 공시실",url:"https://www.klia.or.kr/consumer/publicRelations/publicRelationsProduct/list.do",desc:"생명보험 상품별 비교공시"},
+  {badge:"손보협회",bc:"#A87878",name:"손해보험협회 공시실",url:"https://pub.knia.or.kr",desc:"손해보험 상품별 비교공시"},
+  {badge:"금융위",bc:"#8878A8",name:"finlife 금융상품 통합비교",url:"https://finlife.fss.or.kr",desc:"예·적금·보험·대출 한번에"},
+  {badge:"공공",bc:"#68A8A8",name:"보험통계 공공데이터",url:"https://www.data.go.kr/tcs/dss/selectDataSetList.do?keyword=보험",desc:"생명·손해보험 가입통계"},
+  {badge:"건심평",bc:"#C9A96E",name:"건강보험심사평가원",url:"https://www.hira.or.kr/main.do",desc:"청구 병원 정보 조회"},
+  {badge:"법원",bc:"#A89068",name:"대법원 판례검색",url:"https://www.law.go.kr/precInfoP.do",desc:"보험 관련 판례 — 분쟁 대응"},
 ];
 
-/* ── 시드 데이터 ──────────────────────────────────────── */
-const SEED_USERS=[
+const SU=[
   {id:"admin1",name:"관리자",role:"admin",team:"관리팀",pw:"admin123",createdAt:"2025-01-01"},
   {id:"emp1",name:"김영업",role:"employee",team:"1팀",pw:"1234",createdAt:"2025-01-01"},
   {id:"emp2",name:"이상담",role:"employee",team:"2팀",pw:"1234",createdAt:"2025-01-01"},
 ];
-const SEED_DOCS=[
+const SD=[
   {id:"d1",category:"FAQ",title:"보험금 청구 서류 안내",content:"보험금 청구 시 필요 서류:\n1. 보험금 청구서 (서명 필수)\n2. 신분증 사본\n3. 진단서 또는 입퇴원 확인서\n4. 진료비 영수증 및 세부내역서\n5. 통장 사본\n\n※ 사고 관련: 사고 경위서, 경찰 신고 접수증 추가 필요",author:"admin1",authorName:"관리자",createdAt:"2025-01-10",updatedAt:"2025-01-10",tags:["청구","서류","FAQ"]},
   {id:"d2",category:"상품요약",title:"암보험 핵심 보장 요약",content:"【암보험 주요 보장】\n- 일반암 진단비: 2,000만원~5,000만원\n- 소액암(갑상선암 등): 일반암의 10~20%\n- 고액암(뇌암, 혈액암 등): 일반암의 200%\n- 암 입원일당: 1만원/일\n- 암 수술비: 100만원\n\n【주요 특약】\n- 항암방사선/약물치료비\n- 암 사망보험금\n- 재진단암 보장",author:"admin1",authorName:"관리자",createdAt:"2025-01-10",updatedAt:"2025-01-10",tags:["암보험","상품","보장"]},
-  {id:"d3",category:"상담스크립트",title:"거절 처리 화법 — 보험료 부담",content:"고객: '보험료가 너무 비싸요'\n\n[응대 스크립트]\n'네, 고객님 말씀이 충분히 이해됩니다. 사실 많은 분들이 처음에 그렇게 느끼세요. 그런데 제가 한 가지 여쭤봐도 될까요? 만약 큰 수술이 필요하게 된다면 예상 비용이 어느 정도 될 것 같으세요? (고객 답변 유도) 보통 암 치료만 해도 3,000만원 이상 드는데요, 월 OO만원으로 그 리스크를 헤지하신다고 생각하시면 어떨까요?'",author:"emp1",authorName:"김영업",createdAt:"2025-01-12",updatedAt:"2025-01-12",tags:["거절처리","화법","스크립트"]},
-  {id:"d4",category:"업무매뉴얼",title:"신입 등록 절차 가이드",content:"【신규 설계사 등록 절차】\n\n1단계: 서류 준비\n- 주민등록증 사본\n- 보험설계사 자격증 사본\n- 통장 사본\n\n2단계: 본사 전산 등록\n- 영업관리시스템 접속\n- 신규 설계사 등록 메뉴\n- 소속 코드 입력 (팀장 확인 필요)\n\n3단계: 교육 이수\n- 준법감시 교육 (연 1회 의무)\n- 상품 교육 (신규 출시 시)",author:"admin1",authorName:"관리자",createdAt:"2025-01-08",updatedAt:"2025-01-08",tags:["신입","등록","매뉴얼"]},
-  {id:"d5",category:"보상사례",title:"갑상선암 진단비 일부 지급 사례",content:"【사례】 갑상선암 진단, 보험금 청구 → 일부 지급\n\n경위: A씨는 갑상선암 확진 후 암보험 가입 중인 보험사에 일반암 진단비 3,000만원 청구\n\n결과: 소액암(갑상선암) 조항 적용, 300만원만 지급\n\n포인트:\n- 갑상선암은 대부분 보험 약관상 '소액암' 분류\n- 가입 시 이 내용을 명확히 안내해야 민원 예방 가능",author:"admin1",authorName:"관리자",createdAt:"2025-01-15",updatedAt:"2025-01-15",tags:["보상사례","갑상선암","소액암"]},
+  {id:"d3",category:"상담스크립트",title:"거절 처리 화법 — 보험료 부담",content:"고객: '보험료가 너무 비싸요'\n\n[응대 스크립트]\n'네, 고객님 말씀이 충분히 이해됩니다. 사실 많은 분들이 처음에 그렇게 느끼세요. 그런데 제가 한 가지 여쭤봐도 될까요? 만약 큰 수술이 필요하게 된다면 예상 비용이 어느 정도 될 것 같으세요? 보통 암 치료만 해도 3,000만원 이상 드는데요, 월 OO만원으로 그 리스크를 헤지하신다고 생각하시면 어떨까요?'",author:"emp1",authorName:"김영업",createdAt:"2025-01-12",updatedAt:"2025-01-12",tags:["거절처리","화법","스크립트"]},
+  {id:"d4",category:"업무매뉴얼",title:"신입 등록 절차 가이드",content:"【신규 설계사 등록 절차】\n\n1단계: 서류 준비\n- 주민등록증 사본\n- 보험설계사 자격증 사본\n- 통장 사본\n\n2단계: 본사 전산 등록\n- 영업관리시스템 접속 → 신규 설계사 등록 메뉴\n- 소속 코드 입력 (팀장 확인 필요)\n\n3단계: 교육 이수\n- 준법감시 교육 (연 1회 의무)\n- 상품 교육 (신규 출시 시)",author:"admin1",authorName:"관리자",createdAt:"2025-01-08",updatedAt:"2025-01-08",tags:["신입","등록","매뉴얼"]},
+  {id:"d5",category:"보상사례",title:"갑상선암 진단비 일부 지급 사례",content:"【사례】 갑상선암 진단, 보험금 청구 → 일부 지급\n\n경위: A씨는 갑상선암 확진 후 암보험 가입 보험사에 일반암 진단비 3,000만원 청구\n\n결과: 소액암(갑상선암) 조항 적용, 300만원만 지급\n\n포인트:\n- 갑상선암은 대부분 보험 약관상 소액암 분류\n- 가입 시 명확히 안내해야 민원 예방 가능\n- 안내 문구: '갑상선암·전립선암·피부암은 소액암으로 일반암 진단비의 10~20%만 지급됩니다'",author:"admin1",authorName:"관리자",createdAt:"2025-01-15",updatedAt:"2025-01-15",tags:["보상사례","갑상선암","소액암"]},
 ];
 
-/* ── 스토리지 & 상태 ──────────────────────────────────── */
-const load=(k,fb)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):fb}catch{return fb}};
-const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
-
+/* ─ 스토리지 & 상태 ─ */
+const ld=(k,fb)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):fb}catch{return fb}};
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
 let S={
-  users:load("afg_u",SEED_USERS), docs:load("afg_d",SEED_DOCS),
+  users:ld("afg_u",SU), docs:ld("afg_d",SD),
   user:null, view:"knowledge",
-  selCat:"전체", search:"", selDoc:null, showDocForm:false, editDoc:null,
+  selCat:"전체", search:"", selDoc:null,
+  showDocForm:false, editDoc:null,
   adminTab:"users", showUserForm:false, editUser:null,
-  msgs:[], chatInput:"", chatLoading:false, aiCats:[], aiWebSearch:false,
+  msgs:[], chatInput:"", chatLoading:false, aiCats:[], aiWeb:false,
   hubTab:"public", toast:null,
 };
-const set=(p)=>{Object.assign(S,p);render()};
-const today=()=>new Date().toISOString().split("T")[0];
-const esc=(s)=>s==null?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-function toast(msg,type="ok"){
-  set({toast:{msg,type}});
-  setTimeout(()=>set({toast:null}),2800);
+const set=p=>{Object.assign(S,p);render()};
+const td=()=>new Date().toISOString().split("T")[0];
+const esc=s=>s==null?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function toast(msg,t="ok"){
+  set({toast:{msg,t}});
+  setTimeout(()=>set({toast:null}),2600);
 }
 
-/* ── 렌더 ─────────────────────────────────────────────── */
-function render(){document.getElementById("app").innerHTML=S.user?renderApp():renderLogin();bind()}
+/* ─ 렌더 메인 ─ */
+function render(){
+  document.getElementById("app").innerHTML = S.user ? renderApp() : renderLogin();
+  bind();
+}
 
-/* ── 로그인 화면 ──────────────────────────────────────── */
+/* ─ 로그인 ─ */
 function renderLogin(){return`
-<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--navy-deep)">
-  <div style="width:100%;max-width:380px;padding:0 20px">
-
-    <!-- 로고 블록 -->
-    <div style="text-align:center;margin-bottom:44px">
-      <div style="display:inline-flex;align-items:center;justify-content:center;width:88px;height:88px;background:var(--navy-mid);border-radius:50%;margin-bottom:18px;box-shadow:0 0 0 1px var(--border-2),0 8px 32px rgba(0,0,0,.4)">
-        <div style="width:52px;height:52px">${AFG_LOGO_SVG}</div>
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--navy-deep);padding:20px">
+  <div style="width:100%;max-width:380px">
+    <div style="text-align:center;margin-bottom:40px">
+      <div style="display:inline-flex;align-items:center;justify-content:center;width:84px;height:84px;background:var(--navy-mid);border-radius:50%;margin-bottom:16px;border:1px solid var(--border-2)">
+        <div style="width:50px;height:50px">${LOGO_BIG}</div>
       </div>
-      <div style="font-size:26px;font-weight:700;color:var(--white);letter-spacing:.22em;line-height:1">AFG</div>
-      <div style="font-size:10px;color:var(--white-4);letter-spacing:.18em;text-transform:uppercase;margin-top:5px">Authentic Financial Group</div>
+      <div style="font-size:24px;font-weight:700;letter-spacing:.2em">AFG</div>
+      <div style="font-size:10px;color:var(--w4);letter-spacing:.16em;text-transform:uppercase;margin-top:4px">Authentic Financial Group</div>
     </div>
-
-    <!-- 로그인 박스 -->
-    <div style="background:var(--navy-mid);border:1px solid var(--border-2);padding:32px">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--white-4);text-transform:uppercase;margin-bottom:24px">지식관리 시스템</div>
-      <div style="margin-bottom:14px"><label class="lbl">아이디</label><input id="li" class="inp" placeholder="아이디 입력" autocomplete="username"></div>
-      <div style="margin-bottom:8px"><label class="lbl">비밀번호</label><input id="lp" class="inp" type="password" placeholder="비밀번호 입력" autocomplete="current-password"></div>
-      <div id="le" style="color:#C06060;font-size:12px;height:20px;margin-bottom:4px"></div>
-      <button id="lb" class="btn-primary" style="width:100%;padding:12px;font-size:13px;letter-spacing:.1em;margin-top:6px">로그인</button>
-      <p style="color:var(--white-4);font-size:11px;text-align:center;margin-top:20px">admin1 / admin123 &nbsp;·&nbsp; emp1 / 1234</p>
+    <div style="background:var(--navy-mid);border:1px solid var(--border-2);border-radius:14px;padding:28px 24px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--w4);text-transform:uppercase;margin-bottom:22px">지식관리 시스템</div>
+      <div style="margin-bottom:14px"><label class="lbl">아이디</label><input id="li" class="inp" placeholder="아이디" autocomplete="username"></div>
+      <div style="margin-bottom:8px"><label class="lbl">비밀번호</label><input id="lp" class="inp" type="password" placeholder="비밀번호" autocomplete="current-password"></div>
+      <div id="le" style="color:var(--red);font-size:12px;min-height:20px;margin-bottom:6px"></div>
+      <button id="lb" class="btn-p" style="width:100%;font-size:14px;padding:14px;letter-spacing:.08em">로그인</button>
+      <p style="color:var(--w4);font-size:11px;text-align:center;margin-top:18px">admin1 / admin123 &nbsp;·&nbsp; emp1 / 1234</p>
     </div>
-
   </div>
 </div>`}
 
-/* ── 앱 레이아웃 ──────────────────────────────────────── */
+/* ─ 앱 ─ */
 function renderApp(){
   const u=S.user;
-  const tc=S.toast?.type==="err"?"#C06060":S.toast?.type==="info"?"var(--accent)":"#4A8C6A";
+  const tc=S.toast?.t==="err"?"var(--red)":S.toast?.t==="info"?"var(--accent)":"#3A8A5A";
+  const tabs=[
+    {v:"knowledge",label:"지식",ic:IC.book},
+    {v:"ai",label:"AI",ic:IC.bot},
+    {v:"hub",label:"외부데이터",ic:IC.globe},
+    ...(u.role==='admin'?[{v:"admin",label:"관리자",ic:IC.admin}]:[]),
+  ];
   return`
-  ${S.toast?`<div class="toast" style="background:${tc};color:#fff">${S.toast.msg}</div>`:''}
+  ${S.toast?`<div class="toast" style="background:${tc}">${S.toast.msg}</div>`:''}
 
-  <!-- 헤더 -->
-  <div style="background:var(--navy-deep);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100">
-    <div style="max-width:1440px;margin:0 auto;padding:0 28px;display:flex;align-items:center;height:56px;gap:0">
-
-      <!-- 로고 마크 + 텍스트 -->
-      <div style="display:flex;align-items:center;gap:10px;margin-right:28px;flex-shrink:0">
-        <div style="width:28px;height:28px;flex-shrink:0">${AFG_MARK_SVG}</div>
-        <div>
-          <span style="font-size:15px;font-weight:700;color:var(--white);letter-spacing:.16em">AFG</span>
-          <span style="font-size:10px;color:var(--white-4);letter-spacing:.1em;margin-left:8px;text-transform:uppercase">Knowledge</span>
-        </div>
+  <div id="hdr">
+    <div class="hdr-in">
+      <div class="logo">
+        <div style="width:26px;height:26px">${LOGO_SM}</div>
+        <span class="logo-t">AFG</span>
+        <span class="logo-s">Knowledge</span>
       </div>
-
-      <!-- 네비게이션 -->
-      <div style="display:flex;gap:0;flex:1;overflow-x:auto">
-        <button class="nav-item ${S.view==='knowledge'?'active':''}" data-view="knowledge">지식 베이스</button>
-        <button class="nav-item ${S.view==='ai'?'active':''}" data-view="ai">AI 어시스턴트</button>
-        <button class="nav-item ${S.view==='hub'?'active':''}" data-view="hub">외부 데이터</button>
-        ${u.role==='admin'?`<button class="nav-item ${S.view==='admin'?'active':''}" data-view="admin">관리자</button>`:''}
+      <div class="pc-nav">
+        ${tabs.map(t=>`<button class="pnb${S.view===t.v?' on':''}" data-view="${t.v}">${t.label}</button>`).join('')}
       </div>
-
-      <!-- 사용자 정보 -->
-      <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
-        <div style="text-align:right">
-          <div style="font-size:13px;font-weight:600;color:var(--white)">${esc(u.name)}</div>
-          <div style="font-size:10px;color:var(--white-4);letter-spacing:.04em">${esc(u.team)} · ${u.role==='admin'?'ADMIN':'PLANNER'}</div>
-        </div>
-        <button id="logout-btn" class="btn-sm" style="font-size:11px;letter-spacing:.05em;padding:5px 12px">로그아웃</button>
+      <div style="flex:1"></div>
+      <div class="usr">
+        <div class="usr-n">${esc(u.name)}</div>
+        <div class="usr-s">${esc(u.team)} · ${u.role==='admin'?'ADMIN':'PLANNER'}</div>
       </div>
+      <button id="pc-logout" class="btn-s pc-logout" style="margin-left:10px;font-size:11px">로그아웃</button>
     </div>
   </div>
 
-  <!-- 본문 -->
-  <div style="max-width:1440px;margin:0 auto;padding:28px">
-    ${S.view==='knowledge'?renderKnowledge():''}
+  <div id="tbar">
+    ${tabs.map(t=>`<button class="tb${S.view===t.v?' on':''}" data-view="${t.v}">${t.ic}<span>${t.label}</span></button>`).join('')}
+    <button class="tb" id="mob-logout">${IC.admin}<span>로그아웃</span></button>
+  </div>
+
+  <div id="main">
+    ${S.view==='knowledge'?renderKnow():''}
     ${S.view==='ai'?renderAI():''}
     ${S.view==='hub'?renderHub():''}
     ${S.view==='admin'&&u.role==='admin'?renderAdmin():''}
@@ -285,465 +302,421 @@ function renderApp(){
   ${S.showUserForm?renderUserForm():''}
   `}
 
-/* ── 지식 베이스 ──────────────────────────────────────── */
-function renderKnowledge(){
+/* ─ 지식 베이스 ─ */
+function renderKnow(){
   const filtered=S.docs.filter(d=>{
-    const catOk=S.selCat==='전체'||d.category===S.selCat;
+    const co=S.selCat==='전체'||d.category===S.selCat;
     const q=S.search.toLowerCase();
-    return catOk&&(!q||d.title.toLowerCase().includes(q)||d.content.toLowerCase().includes(q)||(d.tags||[]).some(t=>t.includes(q)));
+    return co&&(!q||d.title.toLowerCase().includes(q)||d.content.toLowerCase().includes(q)||(d.tags||[]).some(t=>t.includes(q)));
   });
   const stats=[
-    {l:"전체 문서",v:S.docs.length,c:"var(--accent)"},
-    {l:"FAQ",v:S.docs.filter(d=>d.category==='FAQ').length,c:"var(--cat-1)"},
-    {l:"상품 요약",v:S.docs.filter(d=>d.category==='상품요약').length,c:"var(--cat-2)"},
-    {l:"상담 스크립트",v:S.docs.filter(d=>d.category==='상담스크립트').length,c:"var(--cat-3)"},
-    {l:"보상 사례",v:S.docs.filter(d=>d.category==='보상사례').length,c:"var(--cat-7)"},
+    {l:"전체",v:S.docs.length,c:"var(--accent)"},
+    {l:"FAQ",v:S.docs.filter(d=>d.category==='FAQ').length,c:CHEX['FAQ']},
+    {l:"상품요약",v:S.docs.filter(d=>d.category==='상품요약').length,c:CHEX['상품요약']},
+    {l:"스크립트",v:S.docs.filter(d=>d.category==='상담스크립트').length,c:CHEX['상담스크립트']},
+    {l:"보상사례",v:S.docs.filter(d=>d.category==='보상사례').length,c:CHEX['보상사례']},
   ];
   return`
-  <!-- 통계 카드 -->
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-bottom:28px;background:var(--border)">
-    ${stats.map((s,i)=>`<div class="stat-card" style="${i<4?'border-right:none':''}">
-      <div style="font-size:26px;font-weight:300;color:${s.c};letter-spacing:-.01em">${s.v}</div>
-      <div style="font-size:11px;color:var(--white-4);letter-spacing:.06em;text-transform:uppercase;margin-top:4px">${s.l}</div>
-    </div>`).join('')}
+  <div class="sg">
+    ${stats.map(s=>`<div class="sc"><div class="sn" style="color:${s.c}">${s.v}</div><div class="sl">${s.l}</div></div>`).join('')}
   </div>
-
-  <!-- 검색 + 버튼 -->
-  <div style="display:flex;gap:12px;margin-bottom:16px;align-items:center">
-    <input id="search-input" class="inp" style="flex:1;max-width:360px" placeholder="제목, 내용, 태그 검색" value="${esc(S.search)}">
-    <button id="new-doc-btn" class="btn-primary" style="letter-spacing:.05em">+ 새 문서</button>
+  <div style="display:flex;gap:10px;margin-bottom:14px;align-items:center">
+    <input id="srch" class="inp" style="flex:1" placeholder="제목, 내용, 태그 검색" value="${esc(S.search)}">
+    <button id="new-doc" class="btn-p" style="flex-shrink:0">+ 새 문서</button>
   </div>
-
-  <!-- 카테고리 필터 -->
-  <div style="display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--border)">
-    ${['전체',...CATEGORIES].map(c=>{
-      const active=S.selCat===c;
-      const col=c==='전체'?'var(--accent)':CAT_HEX[c];
-      return`<button class="cat-filter-btn" data-cat="${c}" style="background:${active?col:'transparent'};color:${active?'#fff':'var(--white-3)'};border:1px solid ${active?col:'var(--border)'};padding:4px 13px;font-size:11px;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:all .15s;text-transform:uppercase;border-radius:2px">${c}</button>`;
+  <div class="cscroll">
+    ${['전체',...CATS].map(c=>{
+      const on=S.selCat===c;
+      const col=c==='전체'?'var(--accent)':CHEX[c];
+      return`<button class="cbtn ccat" data-cat="${c}" style="${on?`background:${col};color:#fff;border-color:${col}`:'background:transparent;color:var(--w3);border-color:var(--border)'}">${c}</button>`;
     }).join('')}
   </div>
-
-  <!-- 문서 그리드 -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border)">
+  <div class="dg">
     ${filtered.map(doc=>{
       const ce=S.user.role==='admin'||doc.author===S.user.id;
-      const cc=CAT_HEX[doc.category]||'#888';
-      return`<div class="card" data-doc-id="${doc.id}">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-          <span class="cat-pill" style="background:${cc}22;color:${cc};border:1px solid ${cc}40">${doc.category}</span>
+      const cc=CHEX[doc.category]||'#888';
+      return`<div class="card" data-did="${doc.id}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <span class="pill" style="background:${cc}22;color:${cc};border:1px solid ${cc}40">${doc.category}</span>
           ${ce?`<div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="btn-sm edit-doc-btn" data-id="${doc.id}" style="font-size:11px">수정</button>
-            <button class="btn-sm delete-doc-btn" data-id="${doc.id}" style="font-size:11px;color:var(--white-4)">삭제</button>
+            <button class="btn-s edb" data-id="${doc.id}" style="font-size:11px;padding:5px 10px">수정</button>
+            <button class="btn-s dlb" data-id="${doc.id}" style="font-size:11px;padding:5px 10px;color:var(--w4)">삭제</button>
           </div>`:''}
         </div>
-        <div style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.4">${esc(doc.title)}</div>
-        <div style="font-size:12px;color:var(--white-3);line-height:1.7;margin-bottom:12px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${esc(doc.content)}</div>
-        <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px">${(doc.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
-        <div style="font-size:11px;color:var(--white-4)">${esc(doc.authorName)} · ${doc.updatedAt}</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:7px;line-height:1.4">${esc(doc.title)}</div>
+        <div style="font-size:12px;color:var(--w3);line-height:1.7;margin-bottom:10px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${esc(doc.content)}</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px">${(doc.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
+        <div style="font-size:11px;color:var(--w4)">${esc(doc.authorName)} · ${doc.updatedAt}</div>
       </div>`;}).join('')}
   </div>
-  ${filtered.length===0?`<div style="text-align:center;padding:80px;color:var(--white-4);font-size:13px;letter-spacing:.06em;text-transform:uppercase">검색 결과 없음</div>`:''}
+  ${filtered.length===0?`<div style="text-align:center;padding:60px 20px;color:var(--w4);font-size:13px">검색 결과가 없습니다</div>`:''}
   `}
 
-/* ── AI 어시스턴트 ────────────────────────────────────── */
+/* ─ AI 어시스턴트 ─ */
 function renderAI(){
   const rc=S.aiCats.length>0?S.docs.filter(d=>S.aiCats.includes(d.category)).length:S.docs.length;
   return`
-  <div style="display:grid;grid-template-columns:200px 1fr;gap:1px;height:calc(100vh - 160px);min-height:540px;background:var(--border)">
-
-    <!-- 사이드바 -->
-    <div style="background:var(--navy-mid);padding:20px;overflow-y:auto">
-      <div style="font-size:10px;font-weight:700;color:var(--white-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)">참조 범위</div>
-      <div style="font-size:11px;color:var(--white-4);margin-bottom:12px">미선택 시 전체</div>
-      ${CATEGORIES.map(c=>`<label style="display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer">
-        <input type="checkbox" class="ai-cat" data-cat="${c}" ${S.aiCats.includes(c)?'checked':''} style="accent-color:${CAT_HEX[c]};width:12px;height:12px">
-        <span style="font-size:12px;color:var(--white-2)">${c}</span>
-        <span style="margin-left:auto;font-size:11px;color:var(--white-4)">${S.docs.filter(d=>d.category===c).length}</span>
-      </label>`).join('')}
-      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
-        <div style="font-size:10px;font-weight:700;color:var(--white-4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">웹 검색</div>
-        <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
-          <input type="checkbox" id="ai-websearch" ${S.aiWebSearch?'checked':''} style="accent-color:var(--accent);width:12px;height:12px">
-          <span style="font-size:12px;color:var(--white-2)">실시간 검색</span>
-        </label>
-        <div style="font-size:11px;color:var(--white-4);margin-top:6px;line-height:1.5">최신 판례·공시 정보 웹 검색 보완</div>
-        ${S.aiWebSearch?`<div style="margin-top:8px;padding:7px 10px;background:rgba(74,127,212,.12);border:1px solid rgba(74,127,212,.25);font-size:11px;color:var(--accent)">웹 검색 활성화됨</div>`:''}
+  <div class="ai-wrap">
+    <div class="ai-side">
+      <div class="ai-side-rows">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:var(--w4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">참조 범위</div>
+          ${CATS.map(c=>`<label style="display:flex;align-items:center;gap:7px;margin-bottom:7px;cursor:pointer">
+            <input type="checkbox" class="acat" data-cat="${c}" ${S.aiCats.includes(c)?'checked':''} style="accent-color:${CHEX[c]};width:13px;height:13px;flex-shrink:0">
+            <span style="font-size:12px;color:var(--w2)">${c}</span>
+            <span style="margin-left:auto;font-size:11px;color:var(--w4)">${S.docs.filter(d=>d.category===c).length}</span>
+          </label>`).join('')}
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:var(--w4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">웹 검색</div>
+          <label style="display:flex;align-items:center;gap:7px;cursor:pointer;margin-bottom:8px">
+            <input type="checkbox" id="aweb" ${S.aiWeb?'checked':''} style="accent-color:var(--accent);width:13px;height:13px">
+            <span style="font-size:12px;color:var(--w2)">실시간 검색</span>
+          </label>
+          ${S.aiWeb?`<div style="padding:7px 10px;background:rgba(74,127,212,.12);border:1px solid rgba(74,127,212,.2);border-radius:6px;font-size:11px;color:var(--accent)">웹 검색 활성화됨</div>`:''}
+          <div style="margin-top:10px;font-size:11px;color:var(--w4);line-height:1.5">참조 ${rc}건</div>
+        </div>
       </div>
-      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--white-4)">내부 문서 ${rc}건 참조</div>
     </div>
-
-    <!-- 채팅 영역 -->
-    <div style="background:var(--navy-mid);display:flex;flex-direction:column;overflow:hidden">
-      <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
-        <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:22px;height:22px">${AFG_MARK_SVG}</div>
+    <div class="ai-chat">
+      <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:20px;height:20px">${LOGO_SM}</div>
           <div>
-            <div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--white);text-transform:uppercase">AI 어시스턴트</div>
-            <div style="font-size:11px;color:${S.aiWebSearch?'var(--accent)':'var(--white-4)'};margin-top:1px">
-              지식 베이스 연동${S.aiWebSearch?' · 웹 검색 ON':''}
-            </div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">AI 어시스턴트</div>
+            <div style="font-size:10px;color:${S.aiWeb?'var(--accent)':'var(--w4)'};margin-top:1px">지식 베이스 연동${S.aiWeb?' · 웹 검색 ON':''}</div>
           </div>
         </div>
-        <button id="chat-reset" class="btn-sm" style="font-size:11px;letter-spacing:.05em">초기화</button>
+        <button id="creset" class="btn-s" style="font-size:11px">초기화</button>
       </div>
-
-      <div id="chat-messages">
+      <div id="cmsg">
         ${S.msgs.map(m=>`<div style="display:flex;justify-content:${m.role==='user'?'flex-end':'flex-start'}">
-          <div class="${m.role==='user'?'chat-user':'chat-ai'}">${esc(m.content)}</div>
+          <div class="${m.role==='user'?'cu':'ca'}">${esc(m.content)}</div>
         </div>`).join('')}
-        ${S.chatLoading?`<div style="display:flex;justify-content:flex-start">
-          <div class="chat-ai"><span class="loading-dots"><span>·</span><span>·</span><span>·</span></span></div>
-        </div>`:''}
+        ${S.chatLoading?`<div style="display:flex"><div class="ca"><span class="ldots"><span>·</span><span>·</span><span>·</span></span></div></div>`:''}
       </div>
-
-      <div style="padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:flex-end">
-        <textarea id="chat-input" class="inp" style="flex:1;min-height:42px;max-height:100px;line-height:1.5;padding:10px 14px" placeholder="질문 입력 — Enter 전송 / Shift+Enter 줄바꿈">${esc(S.chatInput)}</textarea>
-        <button id="chat-send" class="btn-primary" style="padding:10px 20px;flex-shrink:0" ${S.chatLoading?'disabled':''}>전송</button>
+      <div style="padding:12px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end">
+        <textarea id="cinp" class="inp" style="flex:1;min-height:42px;max-height:96px;line-height:1.5;font-size:13px" placeholder="질문 입력 (Enter 전송)">${esc(S.chatInput)}</textarea>
+        <button id="csend" class="btn-p" style="flex-shrink:0;padding:10px 16px" ${S.chatLoading?'disabled':''}>전송</button>
       </div>
     </div>
   </div>`}
 
-/* ── 외부 데이터 허브 ─────────────────────────────────── */
+/* ─ 외부 데이터 허브 ─ */
 function renderHub(){return`
-  <div style="margin-bottom:24px">
-    <div style="font-size:13px;color:var(--white-2);margin-bottom:4px">외부 데이터 허브</div>
-    <div style="font-size:11px;color:var(--white-4)">금감원 공시 · 보험협회 · AFG 파트너 보험사 상품 페이지를 한곳에서 바로 접근합니다</div>
+  <div style="margin-bottom:20px">
+    <div style="font-size:15px;font-weight:600;margin-bottom:4px">외부 데이터 허브</div>
+    <div style="font-size:12px;color:var(--w3)">금감원 공시 · 보험협회 · AFG 파트너 보험사 직접 접근</div>
   </div>
-  <div style="display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid var(--border)">
-    ${[["public","공시 및 공공 정보"],["life","파트너 생명보험사"],["nonlife","파트너 손해보험사"]].map(([k,l])=>`
-      <button class="nav-item hub-tab-btn ${S.hubTab===k?'active':''}" data-tab="${k}" style="text-transform:none;font-size:13px;letter-spacing:.03em">${l}</button>`).join('')}
+  <div class="stabs">
+    ${[["public","공시 및 공공"],["life","생명보험사"],["nonlife","손해보험사"]].map(([k,l])=>`
+      <button class="stab htab${S.hubTab===k?' on':''}" data-tab="${k}">${l}</button>`).join('')}
   </div>
-
   ${S.hubTab==='public'?`
-  <div class="hub-section">
-    <div class="hub-section-title">금감원 · 협회 · 공공 공시</div>
-    <div class="hub-grid">
-      ${PUBLIC_LINKS.map(p=>`<a href="${p.url}" target="_blank" rel="noopener" class="hub-card">
-        <div class="hub-card-badge" style="background:${p.bc}20;color:${p.bc};border:1px solid ${p.bc}30">${p.badge}</div>
-        <div class="hub-card-title">${p.name}</div>
-        <div class="hub-card-desc">${p.desc}</div>
+    <div class="hg">
+      ${PUB.map(p=>`<a href="${p.url}" target="_blank" rel="noopener" class="hcard">
+        <span class="pill" style="background:${p.bc}20;color:${p.bc};border:1px solid ${p.bc}30;display:inline-block;margin-bottom:8px">${p.badge}</span>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px">${p.name}</div>
+        <div style="font-size:11px;color:var(--w3);line-height:1.5">${p.desc}</div>
       </a>`).join('')}
     </div>
-  </div>
-  <div style="margin-top:28px;padding:18px 22px;background:var(--navy-mid);border:1px solid var(--border)">
-    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--white-4);text-transform:uppercase;margin-bottom:8px">공공데이터 API 안내</div>
-    <div style="font-size:12px;color:var(--white-3);line-height:1.8">
-      금감원·보험협회 공시 API는 <a href="https://www.data.go.kr" target="_blank" style="color:var(--accent);text-decoration:none">공공데이터포털 (data.go.kr)</a>에서 회원가입 후 인증키 신청이 필요합니다. 자동승인 데이터는 즉시 키가 발급됩니다.
-    </div>
-    <a href="https://www.data.go.kr/ugs/selectPublicDataUseGuideView.do" target="_blank" class="btn-line" style="display:inline-block;margin-top:12px;font-size:11px;padding:6px 14px;text-decoration:none">공공데이터 활용 가이드 열기</a>
-  </div>
-  `:''}
-  ${S.hubTab==='life'?`
-  <div class="hub-section">
-    <div class="hub-section-title">AFG 파트너 생명보험사 (${LIFE_INSURERS.length}개사)</div>
-    <div class="hub-grid">
-      ${LIFE_INSURERS.map(ins=>`<a href="${ins.url}" target="_blank" rel="noopener" class="hub-card">
-        <div class="hub-card-badge" style="background:#6BA88820;color:#6BA888;border:1px solid #6BA88830">생명보험</div>
-        <div class="hub-card-title">${ins.name}</div>
-        <div class="hub-card-desc">${ins.desc}</div>
-      </a>`).join('')}
-    </div>
-  </div>`:''}
-  ${S.hubTab==='nonlife'?`
-  <div class="hub-section">
-    <div class="hub-section-title">AFG 파트너 손해보험사 (${NONLIFE_INSURERS.length}개사)</div>
-    <div class="hub-grid">
-      ${NONLIFE_INSURERS.map(ins=>`<a href="${ins.url}" target="_blank" rel="noopener" class="hub-card">
-        <div class="hub-card-badge" style="background:#A8787820;color:#A87878;border:1px solid #A8787830">손해보험</div>
-        <div class="hub-card-title">${ins.name}</div>
-        <div class="hub-card-desc">${ins.desc}</div>
-      </a>`).join('')}
-    </div>
-  </div>`:''}
+    <div style="margin-top:20px;padding:16px;background:var(--navy-mid);border:1px solid var(--border);border-radius:10px">
+      <div style="font-size:11px;font-weight:700;color:var(--w4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">공공데이터 API 안내</div>
+      <div style="font-size:12px;color:var(--w3);line-height:1.8"><a href="https://www.data.go.kr" target="_blank" style="color:var(--accent);text-decoration:none">data.go.kr</a>에서 회원가입 후 인증키 신청 가능. 자동승인 데이터는 즉시 발급됩니다.</div>
+    </div>`:''}
+  ${S.hubTab==='life'?`<div class="hg">${LIFE.map(i=>`<a href="${i.url}" target="_blank" rel="noopener" class="hcard">
+    <span class="pill" style="background:#6BA88820;color:#6BA888;border:1px solid #6BA88830;display:inline-block;margin-bottom:8px">생명보험</span>
+    <div style="font-size:13px;font-weight:600;margin-bottom:4px">${i.name}</div>
+    <div style="font-size:11px;color:var(--w3)">${i.desc}</div>
+  </a>`).join('')}</div>`:''}
+  ${S.hubTab==='nonlife'?`<div class="hg">${NONLIFE.map(i=>`<a href="${i.url}" target="_blank" rel="noopener" class="hcard">
+    <span class="pill" style="background:#A8787820;color:#A87878;border:1px solid #A8787830;display:inline-block;margin-bottom:8px">손해보험</span>
+    <div style="font-size:13px;font-weight:600;margin-bottom:4px">${i.name}</div>
+    <div style="font-size:11px;color:var(--w3)">${i.desc}</div>
+  </a>`).join('')}</div>`:''}
   `}
 
-/* ── 관리자 ───────────────────────────────────────────── */
+/* ─ 관리자 ─ */
 function renderAdmin(){return`
-  <div style="display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid var(--border)">
-    ${[["users","직원 관리"],["docs","문서 관리"],["stats","현황 통계"]].map(([k,l])=>`
-      <button class="nav-item admin-tab ${S.adminTab===k?'active':''}" data-tab="${k}" style="text-transform:none;font-size:13px;letter-spacing:.03em">${l}</button>`).join('')}
+  <div class="stabs">
+    ${[["users","직원 관리"],["docs","문서 관리"],["stats","통계"]].map(([k,l])=>`
+      <button class="stab atab${S.adminTab===k?' on':''}" data-tab="${k}">${l}</button>`).join('')}
   </div>
-  ${S.adminTab==='users'?renderAdminUsers():''}
-  ${S.adminTab==='docs'?renderAdminDocs():''}
+  ${S.adminTab==='users'?`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div style="font-size:13px;color:var(--w3)">직원 ${S.users.length}명</div>
+      <button id="addu" class="btn-p" style="font-size:12px;padding:10px 16px">+ 직원 추가</button>
+    </div>
+    <div class="twrap"><table>
+      <thead><tr>${["이름","아이디","팀","권한","문서","관리"].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+      <tbody>${S.users.map(u=>`<tr>
+        <td style="color:var(--white);font-weight:500">${esc(u.name)}</td>
+        <td style="font-family:monospace;font-size:12px">${esc(u.id)}</td>
+        <td>${esc(u.team)}</td>
+        <td><span class="pill" style="${u.role==='admin'?'background:rgba(74,127,212,.2);color:var(--accent)':'background:var(--w5);color:var(--w3)'}">${u.role==='admin'?'ADMIN':'PLANNER'}</span></td>
+        <td>${S.docs.filter(d=>d.author===u.id).length}</td>
+        <td><div style="display:flex;gap:6px">
+          <button class="btn-s eu" data-id="${u.id}" style="font-size:11px">수정</button>
+          ${u.id!==S.user.id?`<button class="btn-s du" data-id="${u.id}" data-name="${esc(u.name)}" style="font-size:11px;color:var(--w4)">삭제</button>`:''}
+        </div></td>
+      </tr>`).join('')}</tbody>
+    </table></div>`:''}
+  ${S.adminTab==='docs'?`
+    <div style="font-size:13px;color:var(--w3);margin-bottom:16px">전체 ${S.docs.length}건</div>
+    <div class="twrap"><table>
+      <thead><tr>${["카테고리","제목","작성자","수정일",""].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+      <tbody>${S.docs.map(d=>{const cc=CHEX[d.category]||'#888';return`<tr>
+        <td><span class="pill" style="background:${cc}22;color:${cc}">${d.category}</span></td>
+        <td style="color:var(--white);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(d.title)}</td>
+        <td style="font-size:12px">${esc(d.authorName)}</td>
+        <td style="color:var(--w4);font-size:12px;white-space:nowrap">${d.updatedAt}</td>
+        <td><button class="btn-s adl" data-id="${d.id}" style="font-size:11px;color:var(--w4)">삭제</button></td>
+      </tr>`}).join('')}</tbody>
+    </table></div>`:''}
   ${S.adminTab==='stats'?renderStats():''}
   `}
 
-function renderAdminUsers(){return`
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-    <div style="font-size:13px;color:var(--white-3)">직원 ${S.users.length}명</div>
-    <button id="add-user-btn" class="btn-primary" style="letter-spacing:.05em">+ 직원 추가</button>
-  </div>
-  <div style="background:var(--navy-mid);border:1px solid var(--border)">
-    <table>
-      <thead><tr>${["이름","아이디","팀","권한","등록일","문서","관리"].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
-      <tbody>${S.users.map(u=>`<tr>
-        <td style="color:var(--white);font-weight:500">${esc(u.name)}</td>
-        <td style="color:var(--white-3);font-size:12px;font-family:monospace">${esc(u.id)}</td>
-        <td>${esc(u.team)}</td>
-        <td><span style="font-size:10px;font-weight:700;letter-spacing:.08em;padding:2px 8px;border-radius:2px;${u.role==='admin'?'background:rgba(74,127,212,.2);color:var(--accent)':'background:var(--white-5);color:var(--white-3)'}">${u.role==='admin'?'ADMIN':'PLANNER'}</span></td>
-        <td style="font-size:12px;color:var(--white-4)">${u.createdAt}</td>
-        <td>${S.docs.filter(d=>d.author===u.id).length}</td>
-        <td><div style="display:flex;gap:6px">
-          <button class="btn-sm edit-user-btn" data-id="${u.id}" style="font-size:11px">수정</button>
-          ${u.id!==S.user.id?`<button class="btn-sm delete-user-btn" data-id="${u.id}" data-name="${esc(u.name)}" style="font-size:11px;color:var(--white-4)">삭제</button>`:''}
-        </div></td>
-      </tr>`).join('')}</tbody>
-    </table>
-  </div>`}
-
-function renderAdminDocs(){return`
-  <div style="font-size:13px;color:var(--white-3);margin-bottom:18px">전체 문서 ${S.docs.length}건</div>
-  <div style="background:var(--navy-mid);border:1px solid var(--border)">
-    <table>
-      <thead><tr>${["카테고리","제목","작성자","태그","수정일",""].map(h=>`<th>${h}</th>`).join('')}</tr></thead>
-      <tbody>${S.docs.map(doc=>{const cc=CAT_HEX[doc.category]||'#888';return`<tr>
-        <td><span class="cat-pill" style="background:${cc}22;color:${cc};border:1px solid ${cc}40">${doc.category}</span></td>
-        <td style="color:var(--white);max-width:260px">${esc(doc.title)}</td>
-        <td style="font-size:12px">${esc(doc.authorName)}</td>
-        <td style="font-size:11px">${(doc.tags||[]).slice(0,2).map(t=>`<span class="tag" style="font-size:10px;padding:1px 6px">${esc(t)}</span>`).join(' ')}</td>
-        <td style="color:var(--white-4);font-size:12px">${doc.updatedAt}</td>
-        <td><button class="btn-sm admin-del-doc" data-id="${doc.id}" style="font-size:11px;color:var(--white-4)">삭제</button></td>
-      </tr>`}).join('')}</tbody>
-    </table>
-  </div>`}
-
 function renderStats(){
-  const cs=CATEGORIES.map(c=>({cat:c,count:S.docs.filter(d=>d.category===c).length})).filter(s=>s.count>0);
-  const us=S.users.map(u=>({name:u.name,team:u.team,count:S.docs.filter(d=>d.author===u.id).length})).sort((a,b)=>b.count-a.count);
-  const mx=Math.max(...cs.map(s=>s.count),1);
+  const cs=CATS.map(c=>({c,n:S.docs.filter(d=>d.category===c).length})).filter(s=>s.n>0);
+  const us=S.users.map(u=>({n:u.name,t:u.team,cnt:S.docs.filter(d=>d.author===u.id).length})).sort((a,b)=>b.cnt-a.cnt);
+  const mx=Math.max(...cs.map(s=>s.n),1);
   return`
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)">
-    <div style="background:var(--navy-mid);padding:28px">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--white-4);text-transform:uppercase;margin-bottom:20px">카테고리별 문서</div>
-      ${cs.map(s=>`<div style="margin-bottom:16px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="background:var(--navy-mid);border:1px solid var(--border);padding:20px;border-radius:10px">
+      <div style="font-size:11px;font-weight:700;color:var(--w4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px">카테고리별 문서</div>
+      ${cs.map(s=>`<div style="margin-bottom:14px">
         <div style="display:flex;justify-content:space-between;margin-bottom:5px">
-          <span style="font-size:12px;color:var(--white-2)">${s.cat}</span>
-          <span style="font-size:12px;color:${CAT_HEX[s.cat]};font-weight:600">${s.count}</span>
+          <span style="font-size:12px;color:var(--w2)">${s.c}</span>
+          <span style="font-size:12px;color:${CHEX[s.c]};font-weight:600">${s.n}</span>
         </div>
-        <div style="background:var(--border);height:2px"><div style="background:${CAT_HEX[s.cat]};height:2px;width:${(s.count/mx)*100}%;transition:width .4s"></div></div>
+        <div style="background:var(--border);height:2px;border-radius:1px"><div style="background:${CHEX[s.c]};height:2px;width:${(s.n/mx)*100}%"></div></div>
       </div>`).join('')}
     </div>
-    <div style="background:var(--navy-mid);padding:28px">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--white-4);text-transform:uppercase;margin-bottom:20px">플래너별 기여</div>
-      ${us.map((u,i)=>`<div style="display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border)">
-        <div style="font-size:11px;color:${i===0?'var(--accent)':'var(--white-4)'};font-weight:700;width:16px;text-align:center">${i+1}</div>
-        <div style="flex:1">
-          <div style="font-size:13px;color:var(--white);font-weight:500">${esc(u.name)}</div>
-          <div style="font-size:11px;color:var(--white-4)">${esc(u.team)}</div>
-        </div>
-        <div style="font-size:15px;font-weight:600;color:${i===0?'var(--accent)':'var(--white-2)'}">${u.count}</div>
+    <div style="background:var(--navy-mid);border:1px solid var(--border);padding:20px;border-radius:10px">
+      <div style="font-size:11px;font-weight:700;color:var(--w4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px">플래너별 기여</div>
+      ${us.map((u,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border)">
+        <div style="font-size:11px;color:${i===0?'var(--accent)':'var(--w4)'};font-weight:700;width:14px;text-align:center">${i+1}</div>
+        <div style="flex:1"><div style="font-size:13px;font-weight:500">${esc(u.n)}</div><div style="font-size:11px;color:var(--w4)">${esc(u.t)}</div></div>
+        <div style="font-size:15px;font-weight:600;color:${i===0?'var(--accent)':'var(--w2)'}">${u.cnt}</div>
       </div>`).join('')}
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:20px;border:1px solid var(--border)">
-        ${[["전체 문서",S.docs.length],["플래너",S.users.filter(u=>u.role==='employee').length],["카테고리",CATEGORIES.filter(c=>S.docs.some(d=>d.category===c)).length]]
-          .map(([l,v],i)=>`<div style="padding:14px;text-align:center;${i<2?'border-right:1px solid var(--border)':''}">
-            <div style="font-size:20px;font-weight:300;color:var(--accent)">${v}</div>
-            <div style="font-size:10px;color:var(--white-4);letter-spacing:.06em;text-transform:uppercase;margin-top:3px">${l}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:16px;border:1px solid var(--border);border-radius:8px;overflow:hidden">
+        ${[["전체",S.docs.length],["플래너",S.users.filter(u=>u.role==='employee').length],["카테고리",CATS.filter(c=>S.docs.some(d=>d.category===c)).length]]
+          .map(([l,v],i)=>`<div style="padding:12px 8px;text-align:center;${i<2?'border-right:1px solid var(--border)':''}">
+            <div style="font-size:18px;font-weight:300;color:var(--accent)">${v}</div>
+            <div style="font-size:9px;color:var(--w4);text-transform:uppercase;letter-spacing:.06em;margin-top:2px">${l}</div>
           </div>`).join('')}
       </div>
     </div>
   </div>`}
 
-/* ── 모달들 ───────────────────────────────────────────── */
+/* ─ 모달들 ─ */
 function renderDocModal(){
-  const d=S.selDoc;const cc=CAT_HEX[d.category]||'#888';const ce=S.user.role==='admin'||d.author===S.user.id;
-  return`<div class="overlay" id="doc-modal-bg"><div class="modal" style="max-width:660px" onclick="event.stopPropagation()">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
+  const d=S.selDoc;const cc=CHEX[d.category]||'#888';const ce=S.user.role==='admin'||d.author===S.user.id;
+  return`<div class="overlay" id="dmbg"><div class="modal" style="max-width:660px" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
       <div>
-        <span class="cat-pill" style="background:${cc}22;color:${cc};border:1px solid ${cc}40;display:inline-block;margin-bottom:10px">${d.category}</span>
-        <h2 style="color:var(--white);font-size:18px;font-weight:600;line-height:1.3">${esc(d.title)}</h2>
+        <span class="pill" style="background:${cc}22;color:${cc};border:1px solid ${cc}40;display:inline-block;margin-bottom:8px">${d.category}</span>
+        <h2 style="font-size:17px;font-weight:600;line-height:1.3">${esc(d.title)}</h2>
       </div>
-      <button class="btn-sm" id="close-doc-modal" style="font-size:13px;flex-shrink:0;margin-left:16px">✕</button>
+      <button class="btn-s" id="cdm" style="font-size:14px;margin-left:12px;flex-shrink:0">✕</button>
     </div>
-    <pre style="background:var(--navy-deep);border:1px solid var(--border);padding:20px;font-size:13px;color:var(--white-2);line-height:1.8;white-space:pre-wrap;max-height:360px;overflow-y:auto;font-family:'Noto Sans KR',sans-serif;border-radius:2px">${esc(d.content)}</pre>
-    <div style="display:flex;gap:4px;flex-wrap:wrap;margin:14px 0">${(d.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
-    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border)">
-      <span style="font-size:11px;color:var(--white-4)">${esc(d.authorName)} · ${d.createdAt} 등록 · ${d.updatedAt} 수정</span>
+    <pre style="background:var(--navy-deep);border:1px solid var(--border);padding:16px;font-size:13px;color:var(--w2);line-height:1.8;white-space:pre-wrap;max-height:320px;overflow-y:auto;font-family:'Noto Sans KR',sans-serif;border-radius:8px">${esc(d.content)}</pre>
+    <div style="display:flex;gap:4px;flex-wrap:wrap;margin:12px 0">${(d.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border);flex-wrap:wrap;gap:8px">
+      <span style="font-size:11px;color:var(--w4)">${esc(d.authorName)} · ${d.updatedAt}</span>
       ${ce?`<div style="display:flex;gap:8px">
-        <button class="btn-line" id="modal-edit" style="padding:7px 16px;font-size:12px">수정</button>
-        <button class="btn-line" id="modal-del" style="padding:7px 16px;font-size:12px;color:var(--red-soft);border-color:var(--red-soft)">삭제</button>
+        <button class="btn-l" id="mde" style="padding:8px 16px;font-size:12px">수정</button>
+        <button class="btn-l" id="mdd" style="padding:8px 16px;font-size:12px;color:var(--red);border-color:var(--red)">삭제</button>
       </div>`:''}
     </div>
   </div></div>`}
 
 function renderDocForm(){
   const d=S.editDoc;
-  return`<div class="overlay" id="doc-form-bg"><div class="modal" style="max-width:680px" onclick="event.stopPropagation()">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-      <div style="font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--white);text-transform:uppercase">${d?'문서 수정':'새 문서 작성'}</div>
-      <button class="btn-sm" id="close-doc-form">✕</button>
+  return`<div class="overlay" id="dfbg"><div class="modal" style="max-width:660px" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div style="font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">${d?'문서 수정':'새 문서 작성'}</div>
+      <button class="btn-s" id="cdf">✕</button>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-      <div><label class="lbl">카테고리</label><select id="f-cat" class="inp">${CATEGORIES.map(c=>`<option value="${c}" ${(d?.category||'FAQ')===c?'selected':''}>${c}</option>`).join('')}</select></div>
-      <div><label class="lbl">제목</label><input id="f-title" class="inp" placeholder="문서 제목" value="${esc(d?.title||'')}"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+      <div><label class="lbl">카테고리</label><select id="fcat" class="inp">${CATS.map(c=>`<option value="${c}" ${(d?.category||'FAQ')===c?'selected':''}>${c}</option>`).join('')}</select></div>
+      <div><label class="lbl">제목</label><input id="ftit" class="inp" placeholder="문서 제목" value="${esc(d?.title||'')}"></div>
     </div>
-    <div style="margin-bottom:14px"><label class="lbl">내용</label><textarea id="f-content" class="inp" style="min-height:200px;line-height:1.8;font-size:13px" placeholder="내용을 입력하세요">${esc(d?.content||'')}</textarea></div>
-    <div style="margin-bottom:22px"><label class="lbl">태그 (쉼표 구분)</label><input id="f-tags" class="inp" placeholder="청구, 서류, FAQ" value="${esc((d?.tags||[]).join(', '))}"></div>
+    <div style="margin-bottom:12px"><label class="lbl">내용</label><textarea id="fcon" class="inp" style="min-height:180px;line-height:1.8;font-size:13px" placeholder="내용 입력">${esc(d?.content||'')}</textarea></div>
+    <div style="margin-bottom:20px"><label class="lbl">태그 (쉼표 구분)</label><input id="ftag" class="inp" placeholder="청구, 서류, FAQ" value="${esc((d?.tags||[]).join(', '))}"></div>
     <div style="display:flex;justify-content:flex-end;gap:10px">
-      <button class="btn-line" id="cancel-doc-form" style="padding:9px 18px">취소</button>
-      <button class="btn-primary" id="save-doc-form">저장</button>
+      <button class="btn-l" id="cfdf" style="padding:11px 18px">취소</button>
+      <button class="btn-p" id="sfdf">저장</button>
     </div>
   </div></div>`}
 
 function renderUserForm(){
   const u=S.editUser;
-  return`<div class="overlay" id="user-form-bg"><div class="modal" style="max-width:400px" onclick="event.stopPropagation()">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-      <div style="font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--white);text-transform:uppercase">${u?'직원 수정':'직원 추가'}</div>
-      <button class="btn-sm" id="close-user-form">✕</button>
+  return`<div class="overlay" id="ufbg"><div class="modal" style="max-width:400px" onclick="event.stopPropagation()">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div style="font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">${u?'직원 수정':'직원 추가'}</div>
+      <button class="btn-s" id="cuf">✕</button>
     </div>
-    ${[['이름','uf-name','text','홍길동',u?.name||''],['아이디','uf-id','text','login_id',u?.id||''],['비밀번호','uf-pw','password','비밀번호',u?.pw||''],['팀','uf-team','text','1팀',u?.team||'']]
-      .map(([l,id,t,ph,v])=>`<div style="margin-bottom:13px"><label class="lbl">${l}</label><input id="${id}" class="inp" type="${t}" placeholder="${ph}" value="${esc(v)}" ${u&&id==='uf-id'?'disabled':''}></div>`).join('')}
-    <div style="margin-bottom:22px"><label class="lbl">권한</label><select id="uf-role" class="inp">
+    ${[['이름','un','text','홍길동',u?.name||''],['아이디','ui','text','login_id',u?.id||''],['비밀번호','up','password','비밀번호',u?.pw||''],['팀','ut','text','1팀',u?.team||'']]
+      .map(([l,id,t,ph,v])=>`<div style="margin-bottom:12px"><label class="lbl">${l}</label><input id="${id}" class="inp" type="${t}" placeholder="${ph}" value="${esc(v)}" ${u&&id==='ui'?'disabled':''}></div>`).join('')}
+    <div style="margin-bottom:20px"><label class="lbl">권한</label><select id="ur" class="inp">
       <option value="employee" ${(u?.role||'employee')==='employee'?'selected':''}>플래너 (직원)</option>
       <option value="admin" ${u?.role==='admin'?'selected':''}>관리자</option>
     </select></div>
     <div style="display:flex;justify-content:flex-end;gap:10px">
-      <button class="btn-line" id="cancel-user-form" style="padding:9px 18px">취소</button>
-      <button class="btn-primary" id="save-user-form">저장</button>
+      <button class="btn-l" id="cufb" style="padding:11px 18px">취소</button>
+      <button class="btn-p" id="sufb">저장</button>
     </div>
   </div></div>`}
 
-/* ── 이벤트 바인딩 ────────────────────────────────────── */
+/* ─ 이벤트 바인딩 ─ */
 function bind(){
   if(!S.user){
     const go=()=>{
       const id=document.getElementById('li')?.value,pw=document.getElementById('lp')?.value;
       const u=S.users.find(u=>u.id===id&&u.pw===pw);
-      if(u){const w=`안녕하세요, ${u.name}님.\n\nAFG 지식관리 시스템에 오신 것을 환영합니다.\n내부 지식 베이스와 외부 공시 데이터를 활용하여 상담 업무를 지원합니다.\n\n예시 질문\n· 보험금 청구 서류 안내\n· 암보험 보장 내용 요약\n· 고객이 보험료 부담을 느낄 때 응대 방법\n· 갑상선암 소액암 판례 (웹 검색 ON 권장)`;
-        set({user:u,msgs:[{role:'assistant',content:w}]});}
+      if(u){set({user:u,msgs:[{role:'assistant',content:`안녕하세요, ${u.name}님.\n\nAFG 지식관리 시스템입니다.\n내부 지식 베이스와 외부 공시 데이터로 상담 업무를 지원합니다.\n\n예시 질문\n· 보험금 청구 서류 안내\n· 암보험 보장 내용 요약\n· 보험료 거절 고객 응대 방법\n· 갑상선암 소액암 판례 (웹 검색 ON 권장)`}]});}
       else{const el=document.getElementById('le');if(el)el.textContent='아이디 또는 비밀번호가 올바르지 않습니다.';}
     };
     document.getElementById('lb')?.addEventListener('click',go);
-    document.getElementById('lp')?.addEventListener('keydown',e=>{if(e.key==='Enter')go();});
-    document.getElementById('li')?.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('lp').focus();});
+    ['lp','li'].forEach(id=>document.getElementById(id)?.addEventListener('keydown',e=>{if(e.key==='Enter'){id==='li'?document.getElementById('lp').focus():go();}}));
     return;
   }
-  document.getElementById('logout-btn')?.addEventListener('click',()=>set({user:null,msgs:[]}));
+
+  const logout=()=>set({user:null,msgs:[]});
+  document.getElementById('pc-logout')?.addEventListener('click',logout);
+  document.getElementById('mob-logout')?.addEventListener('click',logout);
   document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>set({view:b.dataset.view})));
 
+  /* 지식 베이스 */
   if(S.view==='knowledge'){
-    document.getElementById('search-input')?.addEventListener('input',e=>set({search:e.target.value}));
-    document.getElementById('new-doc-btn')?.addEventListener('click',()=>set({showDocForm:true,editDoc:null}));
-    document.querySelectorAll('.cat-filter-btn').forEach(b=>b.addEventListener('click',()=>set({selCat:b.dataset.cat})));
-    document.querySelectorAll('.card').forEach(card=>{card.addEventListener('click',e=>{
-      if(e.target.closest('.edit-doc-btn,.delete-doc-btn'))return;
-      const d=S.docs.find(d=>d.id===card.dataset.docId);if(d)set({selDoc:d});
-    });});
-    document.querySelectorAll('.edit-doc-btn').forEach(b=>b.addEventListener('click',()=>{
-      set({editDoc:S.docs.find(d=>d.id===b.dataset.id),showDocForm:true});
-    }));
-    document.querySelectorAll('.delete-doc-btn').forEach(b=>b.addEventListener('click',()=>{
+    document.getElementById('srch')?.addEventListener('input',e=>set({search:e.target.value}));
+    document.getElementById('new-doc')?.addEventListener('click',()=>set({showDocForm:true,editDoc:null}));
+    document.querySelectorAll('.ccat').forEach(b=>b.addEventListener('click',()=>set({selCat:b.dataset.cat})));
+    document.querySelectorAll('.card').forEach(card=>{
+      card.addEventListener('click',e=>{
+        if(e.target.closest('.edb,.dlb'))return;
+        const d=S.docs.find(d=>d.id===card.dataset.did);if(d)set({selDoc:d});
+      });
+    });
+    document.querySelectorAll('.edb').forEach(b=>b.addEventListener('click',()=>set({editDoc:S.docs.find(d=>d.id===b.dataset.id),showDocForm:true})));
+    document.querySelectorAll('.dlb').forEach(b=>b.addEventListener('click',()=>{
       if(!confirm('삭제하시겠습니까?'))return;
-      const nd=S.docs.filter(d=>d.id!==b.dataset.id);save('afg_d',nd);set({docs:nd});toast('문서가 삭제되었습니다.');
+      const nd=S.docs.filter(d=>d.id!==b.dataset.id);sv('afg_d',nd);set({docs:nd});toast('문서가 삭제되었습니다.');
     }));
   }
-  document.getElementById('doc-modal-bg')?.addEventListener('click',()=>set({selDoc:null}));
-  document.getElementById('close-doc-modal')?.addEventListener('click',()=>set({selDoc:null}));
-  document.getElementById('modal-edit')?.addEventListener('click',()=>set({editDoc:S.selDoc,showDocForm:true,selDoc:null}));
-  document.getElementById('modal-del')?.addEventListener('click',()=>{
+
+  /* 문서 모달 */
+  document.getElementById('dmbg')?.addEventListener('click',()=>set({selDoc:null}));
+  document.getElementById('cdm')?.addEventListener('click',()=>set({selDoc:null}));
+  document.getElementById('mde')?.addEventListener('click',()=>set({editDoc:S.selDoc,showDocForm:true,selDoc:null}));
+  document.getElementById('mdd')?.addEventListener('click',()=>{
     if(!confirm('삭제하시겠습니까?'))return;
-    const nd=S.docs.filter(d=>d.id!==S.selDoc.id);save('afg_d',nd);set({docs:nd,selDoc:null});toast('문서가 삭제되었습니다.');
-  });
-  document.getElementById('doc-form-bg')?.addEventListener('click',()=>set({showDocForm:false,editDoc:null}));
-  document.getElementById('close-doc-form')?.addEventListener('click',()=>set({showDocForm:false,editDoc:null}));
-  document.getElementById('cancel-doc-form')?.addEventListener('click',()=>set({showDocForm:false,editDoc:null}));
-  document.getElementById('save-doc-form')?.addEventListener('click',()=>{
-    const title=document.getElementById('f-title').value.trim();
-    const content=document.getElementById('f-content').value.trim();
-    const category=document.getElementById('f-cat').value;
-    const tags=document.getElementById('f-tags').value.split(',').map(t=>t.trim()).filter(Boolean);
-    if(!title){alert('제목을 입력해주세요.');return;}
-    if(!content){alert('내용을 입력해주세요.');return;}
-    let nd;
-    if(S.editDoc){nd=S.docs.map(d=>d.id===S.editDoc.id?{...d,title,content,category,tags,updatedAt:today()}:d);toast('문서가 수정되었습니다.');}
-    else{nd=[{id:'d'+Date.now(),title,content,category,tags,author:S.user.id,authorName:S.user.name,createdAt:today(),updatedAt:today()},...S.docs];toast('문서가 등록되었습니다.');}
-    save('afg_d',nd);set({docs:nd,showDocForm:false,editDoc:null});
+    const nd=S.docs.filter(d=>d.id!==S.selDoc.id);sv('afg_d',nd);set({docs:nd,selDoc:null});toast('문서가 삭제되었습니다.');
   });
 
+  /* 문서 폼 */
+  ['dfbg','cdf','cfdf'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>set({showDocForm:false,editDoc:null})));
+  document.getElementById('sfdf')?.addEventListener('click',()=>{
+    const title=document.getElementById('ftit').value.trim();
+    const content=document.getElementById('fcon').value.trim();
+    const category=document.getElementById('fcat').value;
+    const tags=document.getElementById('ftag').value.split(',').map(t=>t.trim()).filter(Boolean);
+    if(!title||!content){alert('제목과 내용을 입력해주세요.');return;}
+    let nd;
+    if(S.editDoc){nd=S.docs.map(d=>d.id===S.editDoc.id?{...d,title,content,category,tags,updatedAt:td()}:d);toast('문서가 수정되었습니다.');}
+    else{nd=[{id:'d'+Date.now(),title,content,category,tags,author:S.user.id,authorName:S.user.name,createdAt:td(),updatedAt:td()},...S.docs];toast('문서가 등록되었습니다.');}
+    sv('afg_d',nd);set({docs:nd,showDocForm:false,editDoc:null});
+  });
+
+  /* AI */
   if(S.view==='ai'){
-    document.querySelectorAll('.ai-cat').forEach(cb=>cb.addEventListener('change',()=>{
-      set({aiCats:[...document.querySelectorAll('.ai-cat:checked')].map(c=>c.dataset.cat)});
+    document.querySelectorAll('.acat').forEach(cb=>cb.addEventListener('change',()=>{
+      set({aiCats:[...document.querySelectorAll('.acat:checked')].map(c=>c.dataset.cat)});
     }));
-    document.getElementById('ai-websearch')?.addEventListener('change',e=>set({aiWebSearch:e.target.checked}));
-    document.getElementById('chat-reset')?.addEventListener('click',()=>set({msgs:[{role:'assistant',content:'대화가 초기화되었습니다.'}],chatInput:''}));
-    const ci=document.getElementById('chat-input');
-    ci?.addEventListener('input',e=>{S.chatInput=e.target.value;});
+    document.getElementById('aweb')?.addEventListener('change',e=>set({aiWeb:e.target.checked}));
+    document.getElementById('creset')?.addEventListener('click',()=>set({msgs:[{role:'assistant',content:'대화가 초기화되었습니다.'}],chatInput:''}));
+    const ci=document.getElementById('cinp');
+    ci?.addEventListener('input',e=>{S.chatInput=e.target.value});
     ci?.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}});
-    document.getElementById('chat-send')?.addEventListener('click',sendChat);
+    document.getElementById('csend')?.addEventListener('click',sendChat);
     scrollChat();
   }
-  if(S.view==='hub'){
-    document.querySelectorAll('.hub-tab-btn').forEach(b=>b.addEventListener('click',()=>set({hubTab:b.dataset.tab})));
-  }
+
+  /* 허브 */
+  if(S.view==='hub') document.querySelectorAll('.htab').forEach(b=>b.addEventListener('click',()=>set({hubTab:b.dataset.tab})));
+
+  /* 관리자 */
   if(S.view==='admin'){
-    document.querySelectorAll('.admin-tab').forEach(b=>b.addEventListener('click',()=>set({adminTab:b.dataset.tab})));
-    document.getElementById('add-user-btn')?.addEventListener('click',()=>set({showUserForm:true,editUser:null}));
-    document.querySelectorAll('.edit-user-btn').forEach(b=>b.addEventListener('click',()=>{
-      set({editUser:S.users.find(u=>u.id===b.dataset.id),showUserForm:true});
-    }));
-    document.querySelectorAll('.delete-user-btn').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.atab').forEach(b=>b.addEventListener('click',()=>set({adminTab:b.dataset.tab})));
+    document.getElementById('addu')?.addEventListener('click',()=>set({showUserForm:true,editUser:null}));
+    document.querySelectorAll('.eu').forEach(b=>b.addEventListener('click',()=>set({editUser:S.users.find(u=>u.id===b.dataset.id),showUserForm:true})));
+    document.querySelectorAll('.du').forEach(b=>b.addEventListener('click',()=>{
       if(!confirm(`${b.dataset.name} 직원을 삭제하시겠습니까?`))return;
-      const nu=S.users.filter(u=>u.id!==b.dataset.id);save('afg_u',nu);set({users:nu});toast(`${b.dataset.name} 직원이 삭제되었습니다.`);
+      const nu=S.users.filter(u=>u.id!==b.dataset.id);sv('afg_u',nu);set({users:nu});toast(`${b.dataset.name} 직원이 삭제되었습니다.`);
     }));
-    document.querySelectorAll('.admin-del-doc').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.adl').forEach(b=>b.addEventListener('click',()=>{
       if(!confirm('삭제하시겠습니까?'))return;
-      const nd=S.docs.filter(d=>d.id!==b.dataset.id);save('afg_d',nd);set({docs:nd});toast('문서가 삭제되었습니다.');
+      const nd=S.docs.filter(d=>d.id!==b.dataset.id);sv('afg_d',nd);set({docs:nd});toast('문서가 삭제되었습니다.');
     }));
   }
-  document.getElementById('user-form-bg')?.addEventListener('click',()=>set({showUserForm:false,editUser:null}));
-  document.getElementById('close-user-form')?.addEventListener('click',()=>set({showUserForm:false,editUser:null}));
-  document.getElementById('cancel-user-form')?.addEventListener('click',()=>set({showUserForm:false,editUser:null}));
-  document.getElementById('save-user-form')?.addEventListener('click',()=>{
-    const name=document.getElementById('uf-name').value.trim();
-    const id=S.editUser?S.editUser.id:document.getElementById('uf-id').value.trim();
-    const pw=document.getElementById('uf-pw').value.trim();
-    const team=document.getElementById('uf-team').value.trim();
-    const role=document.getElementById('uf-role').value;
+
+  /* 유저 폼 */
+  ['ufbg','cuf','cufb'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>set({showUserForm:false,editUser:null})));
+  document.getElementById('sufb')?.addEventListener('click',()=>{
+    const name=document.getElementById('un').value.trim();
+    const id=S.editUser?S.editUser.id:document.getElementById('ui').value.trim();
+    const pw=document.getElementById('up').value.trim();
+    const team=document.getElementById('ut').value.trim();
+    const role=document.getElementById('ur').value;
     if(!name||!id||!pw||!team){alert('모든 항목을 입력해주세요.');return;}
     let nu;
     if(S.editUser){nu=S.users.map(u=>u.id===S.editUser.id?{...u,name,pw,team,role}:u);toast('직원 정보가 수정되었습니다.');}
-    else{if(S.users.find(u=>u.id===id)){toast('이미 존재하는 아이디입니다.','err');return;}
-      nu=[...S.users,{id,name,pw,team,role,createdAt:today()}];toast(`${name} 직원이 추가되었습니다.`);}
-    save('afg_u',nu);set({users:nu,showUserForm:false,editUser:null});
+    else{
+      if(S.users.find(u=>u.id===id)){toast('이미 존재하는 아이디입니다.','err');return;}
+      nu=[...S.users,{id,name,pw,team,role,createdAt:td()}];
+      toast(`${name} 직원이 추가되었습니다.`);
+    }
+    sv('afg_u',nu);set({users:nu,showUserForm:false,editUser:null});
   });
 }
 
-/* ── AI 채팅 ──────────────────────────────────────────── */
+/* ─ AI 채팅 ─ */
 async function sendChat(){
   if(S.chatLoading)return;
-  const el=document.getElementById('chat-input');
+  const el=document.getElementById('cinp');
   const text=(el?.value||S.chatInput).trim();
   if(!text)return;
-  const refDocs=S.aiCats.length>0?S.docs.filter(d=>S.aiCats.includes(d.category)):S.docs;
-  const context=refDocs.slice(0,15).map(d=>`[${d.category}] ${d.title}\n${d.content}\n태그: ${(d.tags||[]).join(', ')}`).join('\n\n---\n\n');
-  const newMsgs=[...S.msgs,{role:'user',content:text}];
-  set({msgs:newMsgs,chatInput:'',chatLoading:true});
+  const rd=S.aiCats.length>0?S.docs.filter(d=>S.aiCats.includes(d.category)):S.docs;
+  const ctx=rd.slice(0,15).map(d=>`[${d.category}] ${d.title}\n${d.content}\n태그: ${(d.tags||[]).join(', ')}`).join('\n\n---\n\n');
+  const nm=[...S.msgs,{role:'user',content:text}];
+  set({msgs:nm,chatInput:'',chatLoading:true});
   scrollChat();
   try{
     const sys=`당신은 어센틱금융그룹(AFG)의 AI 상담 어시스턴트입니다.
 현재 사용자: ${S.user.name} (${S.user.role==='admin'?'관리자':'플래너'})
 
 【내부 지식 베이스】
-${context}
+${ctx}
 
 답변 원칙:
-1. 내부 지식 베이스 내용을 우선 활용하고 출처를 명시하세요 (예: [FAQ], [상품요약])
-2. ${S.aiWebSearch?'웹 검색을 통해 최신 보험 정보, 판례, 공시 데이터를 보완하여 답변하세요.':'최신 정보가 필요하면 좌측 패널의 웹 검색을 활성화하도록 안내하세요.'}
+1. 내부 지식 베이스를 우선 활용하고 출처를 명시하세요 (예: [FAQ], [상품요약])
+2. ${S.aiWeb?'웹 검색으로 최신 보험 정보·판례·공시 데이터를 보완하세요.':'최신 정보가 필요하면 웹 검색 활성화를 안내하세요.'}
 3. 실무에 즉시 활용 가능한 명확한 답변을 제공하세요
 4. 간결하고 전문적인 한국어로 답변하세요`;
     const body={model:'claude-sonnet-4-20250514',max_tokens:1200,system:sys,
-      messages:newMsgs.filter(m=>!(m.role==='assistant'&&newMsgs.indexOf(m)===0)).map(m=>({role:m.role,content:m.content}))};
-    if(S.aiWebSearch)body.tools=[{type:"web_search_20250305",name:"web_search"}];
+      messages:nm.filter(m=>!(m.role==='assistant'&&nm.indexOf(m)===0)).map(m=>({role:m.role,content:m.content}))};
+    if(S.aiWeb)body.tools=[{type:"web_search_20250305",name:"web_search"}];
     const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const data=await res.json();
     const reply=(data.content||[]).map(c=>c.type==='text'?c.text:'').filter(Boolean).join('')||'응답을 받지 못했습니다.';
-    set({msgs:[...newMsgs,{role:'assistant',content:reply}],chatLoading:false});
+    set({msgs:[...nm,{role:'assistant',content:reply}],chatLoading:false});
   }catch{
-    set({msgs:[...newMsgs,{role:'assistant',content:'연결 오류가 발생했습니다. 인터넷 연결을 확인해주세요.'}],chatLoading:false});
+    set({msgs:[...nm,{role:'assistant',content:'연결 오류가 발생했습니다. 인터넷 연결을 확인해주세요.'}],chatLoading:false});
   }
   scrollChat();
 }
-function scrollChat(){setTimeout(()=>{const el=document.getElementById('chat-messages');if(el)el.scrollTop=el.scrollHeight;},60)}
+function scrollChat(){setTimeout(()=>{const el=document.getElementById('cmsg');if(el)el.scrollTop=el.scrollHeight;},60)}
 
 render();
 </script>
