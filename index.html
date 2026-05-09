@@ -8,8 +8,8 @@
 <style>
 :root{
   --navy-deep:#0A1628;--navy:#0D1F3C;--navy-mid:#112347;--navy-light:#172D58;
-  --border:rgba(255,255,255,.08);--border-2:rgba(255,255,255,.14);
-  --white:#fff;--w2:rgba(255,255,255,.75);--w3:rgba(255,255,255,.45);--w4:rgba(255,255,255,.22);--w5:rgba(255,255,255,.10);
+  --border:rgba(255,255,255,.14);--border-2:rgba(255,255,255,.22);
+  --white:#fff;--w2:#D8E4F5;--w3:#A8BDD8;--w4:#6E8AAD;--w5:rgba(255,255,255,.10);
   --accent:#4A7FD4;--accent2:#2E5FA8;--gold:#C9A96E;--red:#C06060;
   --cat-faq:#C9A96E;--cat-pro:#6BA888;--cat-scr:#6896C8;--cat-man:#A87878;
   --cat-act:#68A8A8;--cat-not:#A89068;--cat-cla:#8878A8;--cat-etc:#687888;
@@ -27,16 +27,16 @@ textarea{resize:vertical}
 .inp:focus{border-color:var(--accent)}
 .inp::placeholder{color:var(--w4)}
 select.inp option{background:var(--navy-mid)}
-.lbl{display:block;color:var(--w3);font-size:11px;margin-bottom:6px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.lbl{display:block;color:var(--w3);font-size:11px;margin-bottom:6px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
 .btn-p{background:var(--accent);color:#fff;border:none;padding:12px 20px;font-size:13px;font-weight:700;cursor:pointer;border-radius:8px;min-height:44px;white-space:nowrap;transition:background .15s}
 .btn-p:hover{background:var(--accent2)}
 .btn-p:disabled{opacity:.4;cursor:not-allowed}
-.btn-l{background:transparent;color:var(--w3);border:1px solid var(--border-2);padding:11px 18px;font-size:13px;font-weight:500;cursor:pointer;border-radius:8px;min-height:44px;transition:all .15s}
+.btn-l{background:transparent;color:var(--w2);border:1px solid var(--border-2);padding:11px 18px;font-size:13px;font-weight:600;cursor:pointer;border-radius:8px;min-height:44px;transition:all .15s}
 .btn-l:hover{border-color:var(--accent);color:var(--white)}
-.btn-s{background:var(--w5);border:none;color:var(--w3);padding:6px 12px;font-size:12px;cursor:pointer;border-radius:6px;min-height:36px;transition:all .15s}
-.btn-s:hover{color:var(--white);background:var(--border-2)}
+.btn-s{background:rgba(255,255,255,.12);border:none;color:var(--w2);padding:6px 12px;font-size:12px;cursor:pointer;border-radius:6px;min-height:36px;transition:all .15s}
+.btn-s:hover{color:var(--white);background:rgba(255,255,255,.2)}
 .pill{font-size:10px;font-weight:700;padding:3px 8px;letter-spacing:.05em;text-transform:uppercase;border-radius:4px}
-.tag{background:var(--w5);color:var(--w3);font-size:11px;padding:3px 8px;border:1px solid var(--border);border-radius:4px}
+.tag{background:rgba(255,255,255,.12);color:var(--w2);font-size:11px;padding:3px 8px;border:1px solid var(--border-2);border-radius:4px}
 .card{background:var(--navy-mid);border:1px solid var(--border);padding:16px;cursor:pointer;transition:all .15s;border-radius:10px}
 .card:hover,.card:active{background:var(--navy-light);border-color:var(--border-2)}
 
@@ -55,7 +55,7 @@ select.inp option{background:var(--navy-mid)}
 .logo-t{font-size:16px;font-weight:700;letter-spacing:.16em}
 .logo-s{font-size:9px;color:var(--w4);letter-spacing:.1em;text-transform:uppercase;margin-left:4px}
 .pc-nav{display:flex;flex:1;overflow-x:auto}
-.pnb{background:transparent;color:var(--w3);border:none;padding:0 14px;height:var(--hh);font-size:11px;font-weight:600;letter-spacing:.08em;cursor:pointer;border-bottom:2px solid transparent;text-transform:uppercase;white-space:nowrap;transition:color .15s}
+.pnb{background:transparent;color:var(--w3);border:none;padding:0 14px;height:var(--hh);font-size:11px;font-weight:700;letter-spacing:.08em;cursor:pointer;border-bottom:2px solid transparent;text-transform:uppercase;white-space:nowrap;transition:color .15s}
 .pnb:hover{color:var(--w2)}
 .pnb.on{color:var(--white);border-bottom-color:var(--accent)}
 .usr{flex-shrink:0;text-align:right}
@@ -64,7 +64,7 @@ select.inp option{background:var(--navy-mid)}
 
 /* ─ 하단 탭바 (모바일) ─ */
 #tbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--navy-deep);border-top:1px solid var(--border);height:var(--tbh);padding-bottom:env(safe-area-inset-bottom,0px)}
-.tb{flex:1;background:transparent;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--w4);cursor:pointer;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:8px 2px;transition:color .15s}
+.tb{flex:1;background:transparent;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--w3);cursor:pointer;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:8px 2px;transition:color .15s}
 .tb.on{color:var(--accent)}
 .tb svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
@@ -88,7 +88,7 @@ select.inp option{background:var(--navy-mid)}
 @media(max-width:360px){.sg{grid-template-columns:repeat(2,1fr)}}
 .sc{background:var(--navy-mid);border:1px solid var(--border);padding:14px 12px;border-radius:10px}
 .sn{font-size:22px;font-weight:300;line-height:1}
-.sl{font-size:10px;color:var(--w4);letter-spacing:.05em;text-transform:uppercase;margin-top:4px}
+.sl{font-size:10px;color:var(--w3);letter-spacing:.05em;text-transform:uppercase;margin-top:4px}
 
 /* ─ 카테고리 필터 스크롤 ─ */
 .cscroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;margin-bottom:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -104,19 +104,18 @@ select.inp option{background:var(--navy-mid)}
 @media(max-width:900px){.ai-wrap{grid-template-columns:160px 1fr}}
 @media(max-width:599px){
   .ai-wrap{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:calc(100vh - var(--hh) - var(--tbh) - 28px)}
-  .ai-side{padding:12px}
-  .ai-side-rows{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ai-side{padding:12px;max-height:220px}
 }
 .ai-side{background:var(--navy-mid);border:1px solid var(--border);padding:16px;overflow-y:auto;border-radius:10px}
 .ai-chat{background:var(--navy-mid);border:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;border-radius:10px}
 #cmsg{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch}
 .cu{background:var(--accent);color:#fff;padding:11px 14px;font-size:13px;line-height:1.7;max-width:80%;white-space:pre-wrap;font-weight:500;border-radius:16px 16px 4px 16px;align-self:flex-end}
-.ca{background:var(--navy-deep);color:var(--w2);border:1px solid var(--border);padding:11px 14px;font-size:13px;line-height:1.7;max-width:80%;white-space:pre-wrap;border-radius:16px 16px 16px 4px}
+.ca{background:var(--navy-deep);color:var(--w2);border:1px solid var(--border);padding:14px 16px;font-size:13px;line-height:1.75;max-width:88%;word-break:break-word;border-radius:16px 16px 16px 4px}
 
 /* ─ 허브 ─ */
 .hg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
 @media(max-width:599px){.hg{grid-template-columns:1fr}}
-.hcard{background:var(--navy-mid);border:1px solid var(--border);padding:16px;border-radius:10px;text-decoration:none;display:block;transition:background .15s}
+.hcard{background:var(--navy-mid);border:1px solid var(--border-2);padding:16px;border-radius:10px;text-decoration:none;display:block;transition:background .15s;color:#FFFFFF}
 .hcard:hover,.hcard:active{background:var(--navy-light)}
 
 /* ─ 탭/섹션 ─ */
@@ -128,7 +127,7 @@ select.inp option{background:var(--navy-mid)}
 /* ─ 테이블 ─ */
 .twrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px;border:1px solid var(--border)}
 table{width:100%;border-collapse:collapse;min-width:480px}
-th{padding:10px 14px;text-align:left;font-size:11px;color:var(--w4);font-weight:600;letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--border);background:var(--navy-deep);white-space:nowrap}
+th{padding:10px 14px;text-align:left;font-size:11px;color:var(--w3);font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--border-2);background:var(--navy-deep);white-space:nowrap}
 td{padding:11px 14px;border-bottom:1px solid var(--border);font-size:13px;color:var(--w2)}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--w5)}
@@ -215,7 +214,7 @@ let S={
   showDocForm:false, editDoc:null,
   adminTab:"users", showUserForm:false, editUser:null,
   msgs:[], chatInput:"", chatLoading:false, aiCats:[], aiWeb:false,
-  hubTab:"public", toast:null,
+  smartKw:"", hubTab:"public", toast:null,
 };
 const set=p=>{Object.assign(S,p);render()};
 const td=()=>new Date().toISOString().split("T")[0];
@@ -352,52 +351,126 @@ function renderKnow(){
   ${filtered.length===0?`<div style="text-align:center;padding:60px 20px;color:var(--w4);font-size:13px">검색 결과가 없습니다</div>`:''}
   `}
 
+/* 빠른 검색 버튼 목록 */
+/* ── 검색 목적 정의 ─────────────────────────────────────────────────────────
+   각 목적마다: 표시명 / 색상 / 어떤 소스를 우선 검색할지 / 프롬프트 지시
+   ──────────────────────────────────────────────────────────────────────── */
+const SEARCH_INTENTS = [
+  {
+    id:"product",  label:"상품 종류·보장",  color:"#6BA888",
+    icon:`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="12" height="10" rx="1.5"/><line x1="5" y1="7" x2="11" y2="7"/><line x1="5" y1="10" x2="9" y2="10"/></svg>`,
+    sources:"보험다모아(e-insmarket.or.kr), 생명보험협회(klia.or.kr), 손해보험협회(knia.or.kr), 각 보험사 공식 상품 페이지",
+    prompt:(kw)=>`"${kw}" 보험 상품의 종류, 주요 보장 내용, 보험료 수준을 검색해서 표 형식으로 비교 정리해줘. 보험다모아와 각 보험사 공식 사이트를 우선 참조해.`
+  },
+  {
+    id:"case",  label:"판례·보상 사례",  color:"#A89068",
+    icon:`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 14V4l5-2 5 2v10"/><line x1="6" y1="8" x2="10" y2="8"/><line x1="6" y1="11" x2="10" y2="11"/></svg>`,
+    sources:"대법원 판례(law.go.kr), 금융분쟁조정위원회(fss.or.kr), 손해보험협회 분쟁사례",
+    prompt:(kw)=>`"${kw}" 관련 보험금 지급 판례, 분쟁조정 사례, 법원 결정 사례를 검색해서 정리해줘. 대법원 판례와 금융분쟁조정 사례를 우선 참조하고, 실무 적용 포인트도 함께 알려줘.`
+  },
+  {
+    id:"rate",  label:"공시이율·보험료",  color:"#6896C8",
+    icon:`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="2,12 5,7 8,9 11,4 14,6"/><line x1="2" y1="14" x2="14" y2="14"/></svg>`,
+    sources:"금융감독원 공시실(fss.or.kr), 생명보험협회 공시실(klia.or.kr), finlife(finlife.fss.or.kr)",
+    prompt:(kw)=>`"${kw}" 관련 최신 공시이율, 보험료 수준, 해지환급금 공시 정보를 검색해서 알려줘. 금융감독원 공시실과 생명보험협회 공시실 데이터를 우선 참조해.`
+  },
+  {
+    id:"script",  label:"상담 화법·스크립트",  color:"#8878A8",
+    icon:`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M13 6c0 3.3-2.2 5-5 5a6 6 0 0 1-1.5-.2L3 12V9.5C2 8.7 1.5 7.4 1.5 6c0-2.8 2.2-5 5-5s5 2.2 5 5z"/></svg>`,
+    sources:"내부 상담 스크립트 지식 베이스 우선",
+    prompt:(kw)=>`"${kw}" 관련 고객 상담 화법, 거절 처리 멘트, 클로징 스크립트를 내부 지식 베이스에서 먼저 찾고, 없으면 보험 영업 노하우를 검색해서 실무에 바로 쓸 수 있게 정리해줘.`
+  },
+  {
+    id:"law",  label:"약관·법규·규정",  color:"#C9A96E",
+    icon:`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 2h8a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><line x1="5.5" y1="6" x2="10.5" y2="6"/><line x1="5.5" y1="9" x2="8.5" y2="9"/></svg>`,
+    sources:"금융감독원(fss.or.kr), 법제처(law.go.kr), 보험업법, 금융소비자보호법",
+    prompt:(kw)=>`"${kw}" 관련 보험 약관, 법규, 준법 규정, 금융감독원 지침을 검색해서 정리해줘. 금융감독원과 법제처 자료를 우선 참조하고, 실무 유의사항도 함께 알려줘.`
+  },
+  {
+    id:"internal",  label:"내부 문서 검색",  color:"#68A8A8",
+    icon:`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="4"/><line x1="10" y1="10" x2="14" y2="14"/></svg>`,
+    sources:"내부 지식 베이스 전용 (웹 검색 없음)",
+    prompt:(kw)=>`"${kw}" 관련 내용을 내부 지식 베이스에서 찾아서 모두 정리해줘. FAQ, 상품요약, 상담스크립트, 업무매뉴얼, 보상사례 등 등록된 자료 전체를 검색해서 관련 내용을 빠짐없이 알려줘.`
+  },
+];
+
 /* ─ AI 어시스턴트 ─ */
 function renderAI(){
-  const rc=S.aiCats.length>0?S.docs.filter(d=>S.aiCats.includes(d.category)).length:S.docs.length;
+  const rc = S.aiCats.length>0 ? S.docs.filter(d=>S.aiCats.includes(d.category)).length : S.docs.length;
+  const internalMatches = S.smartKw
+    ? S.docs.filter(d=>d.title.includes(S.smartKw)||d.content.includes(S.smartKw)||(d.tags||[]).some(t=>t.includes(S.smartKw)))
+    : [];
+
   return`
-  <div class="ai-wrap">
-    <div class="ai-side">
-      <div class="ai-side-rows">
-        <div>
-          <div style="font-size:10px;font-weight:700;color:var(--w4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">참조 범위</div>
-          ${CATS.map(c=>`<label style="display:flex;align-items:center;gap:7px;margin-bottom:7px;cursor:pointer">
-            <input type="checkbox" class="acat" data-cat="${c}" ${S.aiCats.includes(c)?'checked':''} style="accent-color:${CHEX[c]};width:13px;height:13px;flex-shrink:0">
-            <span style="font-size:12px;color:var(--w2)">${c}</span>
-            <span style="margin-left:auto;font-size:11px;color:var(--w4)">${S.docs.filter(d=>d.category===c).length}</span>
-          </label>`).join('')}
-        </div>
-        <div>
-          <div style="font-size:10px;font-weight:700;color:var(--w4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">웹 검색</div>
-          <label style="display:flex;align-items:center;gap:7px;cursor:pointer;margin-bottom:8px">
-            <input type="checkbox" id="aweb" ${S.aiWeb?'checked':''} style="accent-color:var(--accent);width:13px;height:13px">
-            <span style="font-size:12px;color:var(--w2)">실시간 검색</span>
-          </label>
-          ${S.aiWeb?`<div style="padding:7px 10px;background:rgba(74,127,212,.12);border:1px solid rgba(74,127,212,.2);border-radius:6px;font-size:11px;color:var(--accent)">웹 검색 활성화됨</div>`:''}
-          <div style="margin-top:10px;font-size:11px;color:var(--w4);line-height:1.5">참조 ${rc}건</div>
-        </div>
+  <div style="display:flex;flex-direction:column;height:calc(100vh - var(--hh) - 40px);gap:10px">
+
+    <!-- ① 스마트 검색 바 -->
+    <div style="background:var(--navy-mid);border:1px solid var(--border-2);border-radius:12px;padding:16px 18px">
+      <div style="font-size:11px;font-weight:700;color:#A8BDD8;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">스마트 검색 — 키워드 입력 후 검색 목적을 선택하세요</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <input id="smart-kw" class="inp" style="flex:1;font-size:14px;font-weight:500" placeholder="예: 암보험, 실손보험, 갑상선암, 보험료 거절..." value="${esc(S.smartKw||'')}">
+        <button id="smart-clear" class="btn-s" style="flex-shrink:0;font-size:12px;padding:8px 14px">초기화</button>
       </div>
+
+      <!-- ② 검색 목적 선택 버튼들 -->
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        ${SEARCH_INTENTS.map(i=>`
+          <button class="intent-btn" data-intent="${i.id}"
+            style="display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;border:1px solid ${i.color}50;background:${i.color}15;color:#D8E4F5;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:'Noto Sans KR',sans-serif">
+            <span style="color:${i.color};width:14px;height:14px;flex-shrink:0">${i.icon}</span>
+            ${i.label}
+          </button>`).join('')}
+      </div>
+
+      <!-- ③ 내부 문서 즉시 검색 결과 -->
+      ${S.smartKw && internalMatches.length>0 ? `
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div style="font-size:11px;color:#6E8AAD;margin-bottom:8px">내부 문서 ${internalMatches.length}건 발견 — 클릭하면 상세 내용을 봅니다</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          ${internalMatches.slice(0,6).map(d=>`
+            <button class="inner-doc-btn" data-id="${d.id}"
+              style="padding:5px 12px;border-radius:16px;border:1px solid ${CHEX[d.category]||'#888'}50;background:${CHEX[d.category]||'#888'}15;color:#D8E4F5;font-size:11px;font-weight:600;cursor:pointer;font-family:'Noto Sans KR',sans-serif;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+              <span style="color:${CHEX[d.category]||'#888'}">${d.category}</span> · ${esc(d.title)}
+            </button>`).join('')}
+        </div>
+      </div>` : S.smartKw ? `<div style="margin-top:10px;font-size:11px;color:#6E8AAD">내부 문서에서 "${esc(S.smartKw)}" 관련 자료 없음 — 외부 검색 목적을 선택하세요</div>` : ''}
     </div>
-    <div class="ai-chat">
-      <div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+
+    <!-- ④ 채팅 영역 -->
+    <div class="ai-chat" style="flex:1;min-height:0">
+      <div style="padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
         <div style="display:flex;align-items:center;gap:8px">
-          <div style="width:20px;height:20px">${LOGO_SM}</div>
+          <div style="width:18px;height:18px">${LOGO_SM}</div>
           <div>
-            <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">AI 어시스턴트</div>
-            <div style="font-size:10px;color:${S.aiWeb?'var(--accent)':'var(--w4)'};margin-top:1px">지식 베이스 연동${S.aiWeb?' · 웹 검색 ON':''}</div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">AI 어시스턴트</div>
+            <div style="font-size:10px;color:${S.aiWeb?'var(--accent)':'#6E8AAD'};margin-top:1px">
+              내부 ${rc}건${S.aiWeb?' · 외부 데이터 실시간 검색 ON':' · 내부 문서 전용'}
+            </div>
           </div>
         </div>
-        <button id="creset" class="btn-s" style="font-size:11px">초기화</button>
+        <div style="display:flex;align-items:center;gap:8px">
+          <label style="display:flex;align-items:center;gap:5px;cursor:pointer">
+            <input type="checkbox" id="aweb" ${S.aiWeb?'checked':''} style="accent-color:var(--accent);width:13px;height:13px">
+            <span style="font-size:11px;color:#A8BDD8;font-weight:600">외부검색</span>
+          </label>
+          <button id="creset" class="btn-s" style="font-size:11px;padding:5px 10px">초기화</button>
+        </div>
       </div>
+
       <div id="cmsg">
-        ${S.msgs.map(m=>`<div style="display:flex;justify-content:${m.role==='user'?'flex-end':'flex-start'}">
-          <div class="${m.role==='user'?'cu':'ca'}">${esc(m.content)}</div>
-        </div>`).join('')}
+        ${S.msgs.map(m=>{
+          const isUser = m.role==='user';
+          const displayText = isUser ? (m.display || m.content) : m.content;
+          return `<div style="display:flex;justify-content:${isUser?'flex-end':'flex-start'}">
+            <div class="${isUser?'cu':'ca'}">${isUser ? esc(displayText) : formatAI(displayText)}</div>
+          </div>`;
+        }).join('')}
         ${S.chatLoading?`<div style="display:flex"><div class="ca"><span class="ldots"><span>·</span><span>·</span><span>·</span></span></div></div>`:''}
       </div>
-      <div style="padding:12px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end">
-        <textarea id="cinp" class="inp" style="flex:1;min-height:42px;max-height:96px;line-height:1.5;font-size:13px" placeholder="질문 입력 (Enter 전송)">${esc(S.chatInput)}</textarea>
-        <button id="csend" class="btn-p" style="flex-shrink:0;padding:10px 16px" ${S.chatLoading?'disabled':''}>전송</button>
+
+      <div style="padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end;flex-shrink:0">
+        <textarea id="cinp" class="inp" style="flex:1;min-height:40px;max-height:88px;line-height:1.5;font-size:13px" placeholder="직접 질문 입력 (Enter 전송) — 또는 위에서 키워드 + 목적 선택">${esc(S.chatInput)}</textarea>
+        <button id="csend" class="btn-p" style="flex-shrink:0;padding:10px 14px" ${S.chatLoading?'disabled':''}>전송</button>
       </div>
     </div>
   </div>`}
@@ -416,23 +489,23 @@ function renderHub(){return`
     <div class="hg">
       ${PUB.map(p=>`<a href="${p.url}" target="_blank" rel="noopener" class="hcard">
         <span class="pill" style="background:${p.bc}20;color:${p.bc};border:1px solid ${p.bc}30;display:inline-block;margin-bottom:8px">${p.badge}</span>
-        <div style="font-size:13px;font-weight:600;margin-bottom:4px">${p.name}</div>
-        <div style="font-size:11px;color:var(--w3);line-height:1.5">${p.desc}</div>
+        <div style="font-size:14px;font-weight:700;color:#FFFFFF;margin-bottom:5px">${p.name}</div>
+        <div style="font-size:12px;color:#A8BDD8;line-height:1.5">${p.desc}</div>
       </a>`).join('')}
     </div>
     <div style="margin-top:20px;padding:16px;background:var(--navy-mid);border:1px solid var(--border);border-radius:10px">
-      <div style="font-size:11px;font-weight:700;color:var(--w4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">공공데이터 API 안내</div>
-      <div style="font-size:12px;color:var(--w3);line-height:1.8"><a href="https://www.data.go.kr" target="_blank" style="color:var(--accent);text-decoration:none">data.go.kr</a>에서 회원가입 후 인증키 신청 가능. 자동승인 데이터는 즉시 발급됩니다.</div>
+      <div style="font-size:11px;font-weight:700;color:#A8BDD8;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">공공데이터 API 안내</div>
+      <div style="font-size:12px;color:#D8E4F5;line-height:1.8"><a href="https://www.data.go.kr" target="_blank" style="color:var(--accent);text-decoration:none">data.go.kr</a>에서 회원가입 후 인증키 신청 가능. 자동승인 데이터는 즉시 발급됩니다.</div>
     </div>`:''}
   ${S.hubTab==='life'?`<div class="hg">${LIFE.map(i=>`<a href="${i.url}" target="_blank" rel="noopener" class="hcard">
     <span class="pill" style="background:#6BA88820;color:#6BA888;border:1px solid #6BA88830;display:inline-block;margin-bottom:8px">생명보험</span>
-    <div style="font-size:13px;font-weight:600;margin-bottom:4px">${i.name}</div>
-    <div style="font-size:11px;color:var(--w3)">${i.desc}</div>
+    <div style="font-size:14px;font-weight:700;color:#FFFFFF;margin-bottom:5px">${i.name}</div>
+    <div style="font-size:12px;color:#A8BDD8">${i.desc}</div>
   </a>`).join('')}</div>`:''}
   ${S.hubTab==='nonlife'?`<div class="hg">${NONLIFE.map(i=>`<a href="${i.url}" target="_blank" rel="noopener" class="hcard">
     <span class="pill" style="background:#A8787820;color:#A87878;border:1px solid #A8787830;display:inline-block;margin-bottom:8px">손해보험</span>
-    <div style="font-size:13px;font-weight:600;margin-bottom:4px">${i.name}</div>
-    <div style="font-size:11px;color:var(--w3)">${i.desc}</div>
+    <div style="font-size:14px;font-weight:700;color:#FFFFFF;margin-bottom:5px">${i.name}</div>
+    <div style="font-size:12px;color:#A8BDD8">${i.desc}</div>
   </a>`).join('')}</div>`:''}
   `}
 
@@ -631,15 +704,77 @@ function bind(){
 
   /* AI */
   if(S.view==='ai'){
-    document.querySelectorAll('.acat').forEach(cb=>cb.addEventListener('change',()=>{
-      set({aiCats:[...document.querySelectorAll('.acat:checked')].map(c=>c.dataset.cat)});
-    }));
+    /* 외부검색 토글 */
     document.getElementById('aweb')?.addEventListener('change',e=>set({aiWeb:e.target.checked}));
-    document.getElementById('creset')?.addEventListener('click',()=>set({msgs:[{role:'assistant',content:'대화가 초기화되었습니다.'}],chatInput:''}));
-    const ci=document.getElementById('cinp');
-    ci?.addEventListener('input',e=>{S.chatInput=e.target.value});
-    ci?.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}});
-    document.getElementById('csend')?.addEventListener('click',sendChat);
+
+    /* 초기화 */
+    document.getElementById('creset')?.addEventListener('click',()=>set({
+      msgs:[{role:'assistant',content:'대화가 초기화되었습니다.'}],
+      chatInput:'', smartKw:''
+    }));
+
+    /* 스마트 키워드 입력 — 입력 중에는 렌더 안 함, 포커스 벗어날 때만 내부문서 업데이트 */
+    const skw = document.getElementById('smart-kw');
+    if(skw){
+      skw.addEventListener('input', e => {
+        S.smartKw = e.target.value; // 상태만 저장, 렌더 안 함
+      });
+      skw.addEventListener('blur', e => {
+        // 포커스 벗어날 때 내부문서 결과 업데이트
+        if(S.smartKw !== e.target.value){
+          S.smartKw = e.target.value;
+        }
+        render();
+        // 렌더 후 포커스 복원 불필요 (blur이므로)
+      });
+      skw.addEventListener('keydown', e => {
+        if(e.key==='Enter'){
+          e.preventDefault();
+          S.smartKw = skw.value;
+          render();
+          // 렌더 후 포커스 복원
+          setTimeout(()=>document.getElementById('smart-kw')?.focus(), 10);
+        }
+      });
+    }
+
+    /* 키워드 초기화 버튼 */
+    document.getElementById('smart-clear')?.addEventListener('click', () => {
+      S.smartKw = '';
+      S.chatInput = '';
+      render();
+    });
+
+    /* 내부 문서 바로보기 버튼 */
+    document.querySelectorAll('.inner-doc-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        const d = S.docs.find(d => d.id === b.dataset.id);
+        if(d) set({selDoc: d});
+      });
+    });
+
+    /* 검색 목적(intent) 버튼 클릭 → 자동으로 최적화된 쿼리 생성 후 전송 */
+    document.querySelectorAll('.intent-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const kw = (document.getElementById('smart-kw')?.value || S.smartKw || '').trim();
+        if(!kw){ alert('먼저 검색 키워드를 입력해주세요.'); document.getElementById('smart-kw')?.focus(); return; }
+        const intent = SEARCH_INTENTS.find(i => i.id === btn.dataset.intent);
+        if(!intent) return;
+        if(intent.id !== 'internal') S.aiWeb = true;
+        S.searchIntent = intent;
+        /* 채팅창에는 간단하게 표시, 실제 AI에는 상세 프롬프트 전송 */
+        S.chatDisplayText = `${kw} — ${intent.label}`;
+        S.chatInput = intent.prompt(kw);
+        sendChat();
+      });
+    });
+
+    /* 직접 입력 전송 */
+    const ci = document.getElementById('cinp');
+    ci?.addEventListener('input', e => { S.chatInput = e.target.value; });
+    ci?.addEventListener('keydown', e => { if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendChat(); } });
+    document.getElementById('csend')?.addEventListener('click', sendChat);
+
     scrollChat();
   }
 
@@ -681,38 +816,116 @@ function bind(){
   });
 }
 
+/* ─ AI 답변 마크다운 → 읽기 쉬운 HTML 변환 ─ */
+function formatAI(text){
+  if(!text) return '';
+  let t = text
+    // 테이블 제거 (|---|---| 패턴)
+    .replace(/\|[-:\s|]+\|\n?/g, '')
+    // ### 제목 → 굵고 큰 텍스트
+    .replace(/^###\s+(.+)$/gm, '<div style="font-size:14px;font-weight:700;color:#fff;margin:12px 0 6px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.15)">$1</div>')
+    .replace(/^##\s+(.+)$/gm,  '<div style="font-size:15px;font-weight:700;color:#fff;margin:14px 0 6px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.2)">$1</div>')
+    .replace(/^#\s+(.+)$/gm,   '<div style="font-size:16px;font-weight:700;color:#fff;margin:14px 0 8px">$1</div>')
+    // **굵게** → 강조 색상
+    .replace(/\*\*(.+?)\*\*/g, '<span style="font-weight:700;color:#D8E4F5">$1</span>')
+    // *기울임* 제거 (그냥 텍스트로)
+    .replace(/\*(.+?)\*/g, '$1')
+    // | 테이블 행 → 깔끔한 목록으로
+    .replace(/^\|(.+)\|$/gm, (_, row) => {
+      const cells = row.split('|').map(c=>c.trim()).filter(Boolean);
+      if(cells.length < 2) return '';
+      return '<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07)">'
+        + cells.map((c,i)=>`<span style="flex:1;font-size:12px;color:${i===0?'#A8BDD8':'#D8E4F5'}">${c}</span>`).join('')
+        + '</div>';
+    })
+    // - 목록 → 깔끔한 점 목록
+    .replace(/^[-•]\s+(.+)$/gm, '<div style="display:flex;gap:8px;padding:3px 0"><span style="color:#4A7FD4;flex-shrink:0;margin-top:2px">▸</span><span>$1</span></div>')
+    // 숫자 목록 → 번호 표시
+    .replace(/^(\d+)\.\s+(.+)$/gm, '<div style="display:flex;gap:8px;padding:3px 0"><span style="color:#4A7FD4;flex-shrink:0;font-weight:700;min-width:16px">$1.</span><span>$2</span></div>')
+    // 빈 줄 → 간격
+    .replace(/\n{2,}/g, '<div style="height:8px"></div>')
+    .replace(/\n/g, '<br>')
+    // 남은 --- 구분선
+    .replace(/^-{3,}$/gm, '<hr style="border:none;border-top:1px solid rgba(255,255,255,.1);margin:8px 0">')
+    // 특수문자 이스케이프 방지 (이미 HTML이므로)
+    ;
+  return `<div style="line-height:1.75;font-size:13px">${t}</div>`;
+}
+
 /* ─ AI 채팅 ─ */
 async function sendChat(){
-  if(S.chatLoading)return;
-  const el=document.getElementById('cinp');
-  const text=(el?.value||S.chatInput).trim();
-  if(!text)return;
-  const rd=S.aiCats.length>0?S.docs.filter(d=>S.aiCats.includes(d.category)):S.docs;
-  const ctx=rd.slice(0,15).map(d=>`[${d.category}] ${d.title}\n${d.content}\n태그: ${(d.tags||[]).join(', ')}`).join('\n\n---\n\n');
-  const nm=[...S.msgs,{role:'user',content:text}];
-  set({msgs:nm,chatInput:'',chatLoading:true});
-  scrollChat();
-  try{
-    const sys=`당신은 어센틱금융그룹(AFG)의 AI 상담 어시스턴트입니다.
-현재 사용자: ${S.user.name} (${S.user.role==='admin'?'관리자':'플래너'})
+  if(S.chatLoading) return;
+  const el = document.getElementById('cinp');
+  const text = (el?.value || S.chatInput).trim();
+  if(!text) return;
 
-【내부 지식 베이스】
+  /* 채팅 말풍선에 보일 텍스트 vs AI에 실제로 전달할 텍스트 분리 */
+  const displayText = S.chatDisplayText || text;
+  const promptText  = text;
+  S.chatDisplayText = null;
+
+  const rd  = S.aiCats.length>0 ? S.docs.filter(d=>S.aiCats.includes(d.category)) : S.docs;
+  const ctx = rd.slice(0,15).map(d=>`[${d.category}] ${d.title}\n${d.content}\n태그: ${(d.tags||[]).join(', ')}`).join('\n\n---\n\n');
+
+  const intent      = S.searchIntent;
+  const intentGuide = intent
+    ? `\n【현재 검색 목적】: ${intent.label}\n【우선 참조 소스】: ${intent.sources}\n이 목적에 맞게 위 소스를 우선 검색하고 답변 형식을 최적화하세요.`
+    : '';
+
+  /* 말풍선에는 displayText, API에는 promptText 사용 */
+  const nm = [...S.msgs, {role:'user', content:promptText, display:displayText}];
+  set({msgs:nm, chatInput:'', chatLoading:true, searchIntent:null});
+  scrollChat();
+
+  try{
+    const sys = `당신은 어센틱금융그룹(AFG)의 AI 상담 어시스턴트입니다.
+현재 사용자: ${S.user.name} (${S.user.role==='admin'?'관리자':'플래너'})
+${intentGuide}
+
+【내부 지식 베이스 (${rd.length}건)】
 ${ctx}
 
+【연동된 외부 공식 데이터 소스】
+- 보험다모아 (금감원 상품비교): https://www.e-insmarket.or.kr
+- 금융감독원 보험공시실: https://www.fss.or.kr
+- 생명보험협회 공시실: https://www.klia.or.kr
+- 손해보험협회 공시실: https://pub.knia.or.kr
+- 금융상품통합비교 finlife: https://finlife.fss.or.kr
+- 대법원 판례검색: https://www.law.go.kr
+- 건강보험심사평가원: https://www.hira.or.kr
+- 삼성생명·한화생명·교보생명·신한라이프 등 주요 보험사 공식 사이트
+
+【답변 형식 규칙 — 반드시 준수】
+- 마크다운 기호 절대 사용 금지: ###, ##, **, *, |---|, 테이블(|) 전부 사용하지 마세요
+- 제목이나 섹션 구분은 숫자+점 (1. 2. 3.) 또는 ▶ 기호를 사용하세요
+- 중요한 내용은 ★ 또는 ※ 기호로 강조하세요
+- 항목 나열은 · 또는 - 로 시작하세요
+- 표 대신 항목별로 구분해서 나열하세요
+- 출처는 [출처: 사이트명] 형식으로 표시하세요
+
 답변 원칙:
-1. 내부 지식 베이스를 우선 활용하고 출처를 명시하세요 (예: [FAQ], [상품요약])
-2. ${S.aiWeb?'웹 검색으로 최신 보험 정보·판례·공시 데이터를 보완하세요.':'최신 정보가 필요하면 웹 검색 활성화를 안내하세요.'}
-3. 실무에 즉시 활용 가능한 명확한 답변을 제공하세요
-4. 간결하고 전문적인 한국어로 답변하세요`;
-    const body={model:'claude-sonnet-4-20250514',max_tokens:1200,system:sys,
-      messages:nm.filter(m=>!(m.role==='assistant'&&nm.indexOf(m)===0)).map(m=>({role:m.role,content:m.content}))};
-    if(S.aiWeb)body.tools=[{type:"web_search_20250305",name:"web_search"}];
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-    const data=await res.json();
-    const reply=(data.content||[]).map(c=>c.type==='text'?c.text:'').filter(Boolean).join('')||'응답을 받지 못했습니다.';
-    set({msgs:[...nm,{role:'assistant',content:reply}],chatLoading:false});
-  }catch{
-    set({msgs:[...nm,{role:'assistant',content:'연결 오류가 발생했습니다. 인터넷 연결을 확인해주세요.'}],chatLoading:false});
+1. 내부 지식 베이스를 먼저 확인하고 출처를 명시하세요
+2. ${S.aiWeb
+    ? '웹 검색 시 위 외부 공식 소스를 우선 참조하고 출처 사이트명을 명시하세요.'
+    : '외부 최신 데이터가 필요하면 외부검색을 켜도록 안내하세요.'}
+3. 보험료·공시이율·판례 등 수치는 출처와 날짜를 함께 표시하세요
+4. 실무에 바로 쓸 수 있도록 간결하고 전문적인 한국어로 답변하세요`;
+
+    const body = {
+      model:'claude-sonnet-4-20250514', max_tokens:1500, system:sys,
+      /* API 메시지에는 실제 promptText(content) 사용, display 필드는 제외 */
+      messages: nm
+        .filter(m=>!(m.role==='assistant' && nm.indexOf(m)===0))
+        .map(m=>({role:m.role, content:m.content}))
+    };
+    if(S.aiWeb) body.tools = [{type:"web_search_20250305",name:"web_search"}];
+
+    const res   = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const data  = await res.json();
+    const reply = (data.content||[]).map(c=>c.type==='text'?c.text:'').filter(Boolean).join('') || '응답을 받지 못했습니다.';
+    set({msgs:[...nm,{role:'assistant',content:reply}], chatLoading:false});
+  } catch {
+    set({msgs:[...nm,{role:'assistant',content:'연결 오류가 발생했습니다. 인터넷 연결을 확인해주세요.'}], chatLoading:false});
   }
   scrollChat();
 }
